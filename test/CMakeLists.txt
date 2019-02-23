@@ -3,12 +3,16 @@ find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 configure_file(resources/constraintBasedModel.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 configure_file(resources/iJO1366.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 configure_file(resources/matrix.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
+configure_file(resources/unparsableFile.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 configure_file(resources/vector.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 
 
-project(matlab2EigenTest CXX)
+project(CobraModelParserTest CXX)
 
-set(LIBRARY_TESTS_SOURCES matlab2EigenTest.cpp)
+set(LIBRARY_TESTS_SOURCES
+ModelTest.cpp
+        MatlabV5ParserImplTest.cpp
+        )
 
 set(TEST_REPORTS_DIR "reports")
 add_custom_target(make-nups-test-report-dir ALL

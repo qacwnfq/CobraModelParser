@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.9)
-project(matlab2Eigen LANGUAGES CXX VERSION "0.1.0")
-set(PROJECT_DESCRIPTION  "Library for parsing Matlabfile contents into Eigen3 entities")
+project(CobraModelParser LANGUAGES CXX VERSION "0.1.0")
+set(PROJECT_DESCRIPTION  "Library for parsing Cobra Models into Eigen3 entities")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmakeModules")
 
 find_package(Eigen3 REQUIRED)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 string(TOLOWER ${PROJECT_NAME} LIBRARY_NAME)
 
