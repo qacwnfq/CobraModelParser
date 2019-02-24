@@ -27,9 +27,9 @@ namespace CobraModelParser {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    class UnexpectedFileType : public std::exception {
+    class UnexpectedFileTypeException : public std::exception {
     public:
-        UnexpectedFileType(const std::string &expectedFileType, const std::string &filename) :
+        UnexpectedFileTypeException(const std::string &expectedFileType, const std::string &filename) :
                 expectedFileType(expectedFileType),
                 filename(filename) {}
 
@@ -48,9 +48,9 @@ namespace CobraModelParser {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    class UnknownDataType : public std::exception {
+    class UnknownDataTypeException : public std::exception {
     public:
-        UnknownDataType(const unsigned int &lookupValue) :
+        UnknownDataTypeException(const unsigned int &lookupValue) :
                 lookupValue(lookupValue) {}
 
         const char *what() const throw() override {
@@ -68,7 +68,7 @@ namespace CobraModelParser {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    class ReservedDataType : public std::exception {
+    class ReservedDataTypeException : public std::exception {
     public:
         const char *what() const throw() override {
             std::string message = "Data type is reserved but not defined by standard.";
@@ -80,9 +80,9 @@ namespace CobraModelParser {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    class UnkownEndianIndicator : public std::exception {
+    class UnknownEndianIndicatorException : public std::exception {
     public:
-        UnkownEndianIndicator(const std::string& indicator) : indicator(indicator) {}
+        UnknownEndianIndicatorException(const std::string& indicator) : indicator(indicator) {}
 
         const char *what() const throw() override {
             std::string message = "Endian Indicator " + indicator + " is unkown.";
@@ -95,6 +95,18 @@ namespace CobraModelParser {
         std::string indicator;
     };
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    class ByteArrayTooLargeException : public std::exception {
+    public:
+
+        const char *what() const throw() override {
+            std::string message = "ByteArray too large to parse into return type.";
+            char *buffer = new char[message.size() + 1];
+            std::memcpy(buffer, message.c_str(), message.size() + 1);
+            return buffer;
+        }
+    };
 
 }
 

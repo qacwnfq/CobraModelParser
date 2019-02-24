@@ -34,6 +34,8 @@ namespace CobraModelParser {
 
         void parseBody(const std::string& filename, const Header& header) const {
             std::ifstream file(filename, std::ios::binary | std::ios::in);
+            file.seekg(Header::size, file.beg);
+
             std::vector<MatlabV5DataElement> dataElements;
 
             while (!file.eof()) {
@@ -109,7 +111,7 @@ namespace CobraModelParser {
             const std::string expectedType = "MATLAB 5.0 MAT-file";
             if (std::mismatch(expectedType.begin(), expectedType.end(),
                               header.headerText.begin()).first != expectedType.end()) {
-                throw UnexpectedFileType(expectedType, filename);
+                throw UnexpectedFileTypeException(expectedType, filename);
 
             }
         };
@@ -126,6 +128,7 @@ namespace CobraModelParser {
             static constexpr size_t headerTextSize = 124;
             static constexpr size_t versionFlagSize = 2;
             static constexpr size_t endianIndicatorFlagSize = 2;
+            static constexpr size_t size = headerTextSize + versionFlagSize + endianIndicatorFlagSize;
 
             std::string headerText;
             std::string version;

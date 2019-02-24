@@ -17,7 +17,7 @@ BOOST_AUTO_TEST_SUITE(MatlabV5ParserImpl_suite)
     BOOST_AUTO_TEST_CASE(MatlabV5ParserImpl_throwsIfMatlabFileIsNotV5) {
         CobraModelParser::MatlabV5ParserImpl parser;
 
-        BOOST_CHECK_THROW(parser.parseModelFromFile("unparsableFile.mat"), CobraModelParser::UnexpectedFileType);
+        BOOST_CHECK_THROW(parser.parseModelFromFile("unparsableFile.mat"), CobraModelParser::UnexpectedFileTypeException);
     }
 
     BOOST_AUTO_TEST_CASE(MatlabV5ParserImpl_parsesModel) {

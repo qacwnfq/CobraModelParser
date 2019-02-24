@@ -12,8 +12,8 @@ namespace CobraModelParser {
     public:
 
         static MatlabV5DataElement fromFileStream(std::ifstream &file, std::string endianIndicator) {
-            std::vector<char> numberOfBytes;
-            std::vector<char> dataTypeLookup;
+            std::vector<char> numberOfBytes(numberOfBytesFieldSize);
+            std::vector<char> dataTypeLookup(dataTypeFieldSize);
             file.read(&numberOfBytes[0], numberOfBytesFieldSize);
             file.read(&dataTypeLookup[0], dataTypeFieldSize);
 

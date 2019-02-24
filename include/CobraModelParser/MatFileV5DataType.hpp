@@ -45,7 +45,7 @@ namespace CobraModelParser {
                 case 8:
                     matFileV5DataType.symbol = "--";
                     matFileV5DataType.description = "Reserved";
-                    throw ReservedDataType();
+                    throw ReservedDataTypeException();
                 case 9:
                     matFileV5DataType.symbol = "miDOUBLE";
                     matFileV5DataType.description = "IEEE 754 double format";
@@ -53,11 +53,11 @@ namespace CobraModelParser {
                 case 10:
                     matFileV5DataType.symbol = "--";
                     matFileV5DataType.description = "Reserved";
-                    throw ReservedDataType();
+                    throw ReservedDataTypeException();
                 case 11:
                     matFileV5DataType.symbol = "--";
                     matFileV5DataType.description = "Reserved";
-                    throw ReservedDataType();
+                    throw ReservedDataTypeException();
                 case 12:
                     matFileV5DataType.symbol = "miINT64";
                     matFileV5DataType.description = "64-bit, signed";
@@ -87,7 +87,7 @@ namespace CobraModelParser {
                     matFileV5DataType.description = "Unicode UTF-32 Encoded Character Data";
                     break;
                 default:
-                    throw UnknownDataType(lookupValue);
+                    throw UnknownDataTypeException(lookupValue);
             }
 
         }
@@ -119,9 +119,9 @@ namespace CobraModelParser {
 
 
     private:
-        MatFileV5DataType();
+        MatFileV5DataType() {};
 
-        unsigned int value;
+        size_t value;
         std::string symbol;
         std::string description;
 
