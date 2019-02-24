@@ -7,22 +7,44 @@
 #include <ostream>
 
 #include "CobraModelParser/Exceptions.hpp"
+#include "CobraModelParser/MatlabV5DataElement.hpp"
 #include "CobraModelParser/Parser.hpp"
 
 namespace CobraModelParser {
 
     class MatlabV5ParserImpl : public Parser {
-
+    private:
         struct Header;
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public:
         Model parseModelFromFile(std::string filename) override {
             checkFileExists(filename);
-            parseHeader(filename);
+
+            Header header = parseHeader(filename);
+            std::cout << header << std::endl;
+
+            parseBody(filename, header);
 
             return Model();
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        void parseBody(const std::string& filename, const Header& header) const {
+            std::ifstream file(filename, std::ios::binary | std::ios::in);
+            std::vector<MatlabV5DataElement> dataElements;
+
+            while (!file.eof()) {
+                MatlabV5DataElement dataElement = MatlabV5DataElement::fromFileStream(file, header.endianIndicator);
+                std::cout << dataElement << std::endl;
+                dataElements.push_back(dataElement);
+//                dataElements.push_back( MatlabV5DataElement::fromFileStream(file));
+            }
+
+            file.close();
+
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +55,8 @@ namespace CobraModelParser {
             header = parseHeaderText(filename, header);
             checkFileIsMatlabV5Format(header, filename);
 
-            header = parseHeaderFlags(filename, header);
+            header = parseVersionFlag(filename, header);
+            header = parseEndianIndicatorFlag(filename, header);
 
             return header;
         }
@@ -51,36 +74,38 @@ namespace CobraModelParser {
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        Header parseHeaderFlags(const std::string &filename, Header header) const {
+        Header parseVersionFlag(const std::string &filename, Header header) const {
             std::ifstream file(filename, std::ios::binary | std::ios::in);
-            file.seekg(Header::headerTextSize);
-            file.seekg(0, file.end);
-            std::cout << file.gcount() << std::endl;
             file.seekg(Header::headerTextSize, file.beg);
-
 
             std::vector<char> version(Header::versionFlagSize);
             file.read(&version[0], Header::versionFlagSize);
             header.version = std::string(version.begin(), version.end());
 
+            file.close();
+            return header;
+
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        Header parseEndianIndicatorFlag(const std::string &filename, Header header) const {
+            std::ifstream file(filename, std::ios::binary | std::ios::in);
+            file.seekg(Header::headerTextSize + Header::versionFlagSize, file.beg);
+
             std::vector<char> endianIndicator(Header::endianIndicatorFlagSize);
             file.read(&endianIndicator[0], Header::endianIndicatorFlagSize);
             header.endianIndicator = std::string(endianIndicator.begin(), endianIndicator.end());
-
-            std::cout << version[0] << std::endl;
-            std::cout << version[1] << std::endl;
-            std::cout << endianIndicator[0] << std::endl;
-            std::cout << endianIndicator[1] << std::endl;
-            std::cout << header << std::endl;
 
             file.close();
             return header;
         }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private:
-        void checkFileIsMatlabV5Format(Header header, const std::string& filename) const {
+
+        void checkFileIsMatlabV5Format(Header header, const std::string &filename) const {
             const std::string expectedType = "MATLAB 5.0 MAT-file";
             if (std::mismatch(expectedType.begin(), expectedType.end(),
                               header.headerText.begin()).first != expectedType.end()) {
@@ -98,7 +123,7 @@ namespace CobraModelParser {
                 return os;
             }
 
-            static constexpr size_t headerTextSize = 116;
+            static constexpr size_t headerTextSize = 124;
             static constexpr size_t versionFlagSize = 2;
             static constexpr size_t endianIndicatorFlagSize = 2;
 

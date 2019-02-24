@@ -10,7 +10,8 @@ configure_file(resources/vector.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 project(CobraModelParserTest CXX)
 
 set(LIBRARY_TESTS_SOURCES
-ModelTest.cpp
+        ByteParserTest.cpp
+        ModelTest.cpp
         MatlabV5ParserImplTest.cpp
         )
 
