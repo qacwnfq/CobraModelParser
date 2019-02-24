@@ -12,10 +12,12 @@ namespace CobraModelParser {
     public:
 
         static MatlabV5DataElement fromFileStream(std::ifstream &file, std::string endianIndicator) {
-            std::vector<char> numberOfBytes(numberOfBytesFieldSize);
+
             std::vector<char> dataTypeLookup(dataTypeFieldSize);
-            file.read(&numberOfBytes[0], numberOfBytesFieldSize);
             file.read(&dataTypeLookup[0], dataTypeFieldSize);
+
+            std::vector<char> numberOfBytes(numberOfBytesFieldSize);
+            file.read(&numberOfBytes[0], numberOfBytesFieldSize);
 
             MatlabV5DataElement matlabV5DataElement(ByteParser::parseSize_t(dataTypeLookup, endianIndicator),
                                                     ByteParser::parseSize_t(numberOfBytes, endianIndicator));
@@ -32,7 +34,7 @@ namespace CobraModelParser {
         }
 
     private:
-        MatlabV5DataElement(unsigned int typeLookup, size_t dataSize) :
+        MatlabV5DataElement(size_t typeLookup, size_t dataSize) :
                 dataType(MatFileV5DataType::lookUp(typeLookup)), size(dataSize) {};
 
         MatFileV5DataType dataType;

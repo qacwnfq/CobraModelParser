@@ -13,6 +13,9 @@ namespace CobraModelParser {
         ByteParser() = delete;
 
         static size_t parseSize_t(const std::vector<char> &bytes, const std::string &endianIndicator) {
+            if (sizeof(size_t) < bytes.size()) {
+                throw ByteArrayTooLargeException();
+            }
 
             size_t result = 0;
             if (endianIndicator == "IM") {

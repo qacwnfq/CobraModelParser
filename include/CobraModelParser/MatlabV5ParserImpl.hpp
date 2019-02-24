@@ -34,7 +34,7 @@ namespace CobraModelParser {
 
         void parseBody(const std::string& filename, const Header& header) const {
             std::ifstream file(filename, std::ios::binary | std::ios::in);
-            file.seekg(Header::size, file.beg);
+            file.seekg(Header::size, std::ifstream::beg);
 
             std::vector<MatlabV5DataElement> dataElements;
 
@@ -78,7 +78,7 @@ namespace CobraModelParser {
 
         Header parseVersionFlag(const std::string &filename, Header header) const {
             std::ifstream file(filename, std::ios::binary | std::ios::in);
-            file.seekg(Header::headerTextSize, file.beg);
+            file.seekg(Header::headerTextSize, std::ifstream::beg);
 
             std::vector<char> version(Header::versionFlagSize);
             file.read(&version[0], Header::versionFlagSize);
@@ -93,7 +93,7 @@ namespace CobraModelParser {
 
         Header parseEndianIndicatorFlag(const std::string &filename, Header header) const {
             std::ifstream file(filename, std::ios::binary | std::ios::in);
-            file.seekg(Header::headerTextSize + Header::versionFlagSize, file.beg);
+            file.seekg(Header::headerTextSize + Header::versionFlagSize, std::ifstream::beg);
 
             std::vector<char> endianIndicator(Header::endianIndicatorFlagSize);
             file.read(&endianIndicator[0], Header::endianIndicatorFlagSize);

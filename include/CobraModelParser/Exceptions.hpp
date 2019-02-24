@@ -50,7 +50,7 @@ namespace CobraModelParser {
 
     class UnknownDataTypeException : public std::exception {
     public:
-        UnknownDataTypeException(const unsigned int &lookupValue) :
+        UnknownDataTypeException(const size_t &lookupValue) :
                 lookupValue(lookupValue) {}
 
         const char *what() const throw() override {
@@ -62,7 +62,7 @@ namespace CobraModelParser {
         }
 
     private:
-        const unsigned int lookupValue;
+        const size_t lookupValue;
 
     };
 

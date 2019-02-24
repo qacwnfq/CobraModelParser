@@ -13,35 +13,36 @@ namespace CobraModelParser {
         static MatFileV5DataType lookUp(size_t lookupValue) {
             MatFileV5DataType matFileV5DataType;
             matFileV5DataType.value = lookupValue;
+            std::cout << "lookup: " << lookupValue << std::endl;
             switch (lookupValue) {
                 case 1:
                     matFileV5DataType.symbol = "miINT8";
                     matFileV5DataType.description = "8-bit, signed";
-                    break;
+                    return matFileV5DataType;
                 case 2:
                     matFileV5DataType.symbol = "miUINT8";
                     matFileV5DataType.description = "8-bit, unsigned";
-                    break;
+                    return matFileV5DataType;
                 case 3:
                     matFileV5DataType.symbol = "miINT16";
                     matFileV5DataType.description = "16-bit, signed";
-                    break;
+                    return matFileV5DataType;
                 case 4:
                     matFileV5DataType.symbol = "miUINT16";
                     matFileV5DataType.description = "16-bit, unsigned";
-                    break;
+                    return matFileV5DataType;
                 case 5:
                     matFileV5DataType.symbol = "miINT32";
                     matFileV5DataType.description = "32-bit, signed";
-                    break;
+                    return matFileV5DataType;
                 case 6:
                     matFileV5DataType.symbol = "miUINT32";
                     matFileV5DataType.description = "32-bit, unsigned";
-                    break;
+                    return matFileV5DataType;
                 case 7:
                     matFileV5DataType.symbol = "miSINGLE";
                     matFileV5DataType.description = "IEEE 754 single format";
-                    break;
+                    return matFileV5DataType;
                 case 8:
                     matFileV5DataType.symbol = "--";
                     matFileV5DataType.description = "Reserved";
@@ -49,7 +50,7 @@ namespace CobraModelParser {
                 case 9:
                     matFileV5DataType.symbol = "miDOUBLE";
                     matFileV5DataType.description = "IEEE 754 double format";
-                    break;
+                    return matFileV5DataType;
                 case 10:
                     matFileV5DataType.symbol = "--";
                     matFileV5DataType.description = "Reserved";
@@ -61,15 +62,15 @@ namespace CobraModelParser {
                 case 12:
                     matFileV5DataType.symbol = "miINT64";
                     matFileV5DataType.description = "64-bit, signed";
-                    break;
+                    return matFileV5DataType;
                 case 13:
                     matFileV5DataType.symbol = "miUINT64";
                     matFileV5DataType.description = "64-bit, unsigned";
-                    break;
+                    return matFileV5DataType;
                 case 14:
                     matFileV5DataType.symbol = "miMATRIX";
                     matFileV5DataType.description = "MATLAB array";
-                    break;
+                    return matFileV5DataType;
                 case 15:
                     matFileV5DataType.symbol = "miCOMPRESSED";
                     matFileV5DataType.description = "Compressed Data";
@@ -81,11 +82,11 @@ namespace CobraModelParser {
                 case 17:
                     matFileV5DataType.symbol = "miUTF16";
                     matFileV5DataType.description = "Unicode UTF-16 Encoded Character Data";
-                    break;
+                    return matFileV5DataType;
                 case 18:
                     matFileV5DataType.symbol = "miUTF32";
                     matFileV5DataType.description = "Unicode UTF-32 Encoded Character Data";
-                    break;
+                    return matFileV5DataType;
                 default:
                     throw UnknownDataTypeException(lookupValue);
             }
