@@ -5,7 +5,7 @@
 #include <ostream>
 
 #include "CobraModelParser/ByteParser.hpp"
-#include "CobraModelParser/MatlabFileV5DataType.hpp"
+#include "CobraModelParser/MatlabV5DataType.hpp"
 
 namespace CobraModelParser {
     class MatlabV5ArrayDataType {

@@ -1,0 +1,10 @@
+#ifndef COBRAMODELPARSER_DATATYPESMAPPER_HPP
+#define COBRAMODELPARSER_DATATYPESMAPPER_HPP
+
+namespace CobraModelParser {
+    class DataTypesMapper {
+
+    };
+}
+
+#endif //COBRAMODELPARSER_DATATYPESMAPPER_HPP

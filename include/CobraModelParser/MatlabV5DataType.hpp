@@ -7,12 +7,16 @@
 #include "CobraModelParser/Exceptions.hpp"
 
 namespace CobraModelParser {
-    class MatlabFileV5DataType {
+    class MatlabV5DataType {
     public:
-        static MatlabFileV5DataType lookUp(size_t lookupValue) {
-            MatlabFileV5DataType matFileV5DataType;
+        static MatlabV5DataType lookUp(size_t lookupValue) {
+            MatlabV5DataType matFileV5DataType;
             matFileV5DataType.value = lookupValue;
             switch (lookupValue) {
+                case 0:
+                    matFileV5DataType.symbol = "NULL";
+                    matFileV5DataType.description = "Empty Data Type";
+                    return matFileV5DataType;
                 case 1:
                     matFileV5DataType.symbol = "miINT8";
                     matFileV5DataType.description = "8-bit, signed";
@@ -110,14 +114,14 @@ namespace CobraModelParser {
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        friend std::ostream &operator<<(std::ostream &os, const MatlabFileV5DataType &type) {
+        friend std::ostream &operator<<(std::ostream &os, const MatlabV5DataType &type) {
             os << "value: " << type.value << " symbol: " << type.symbol << " description: " << type.description;
             return os;
         }
 
 
     private:
-        MatlabFileV5DataType() {};
+        MatlabV5DataType() {};
 
         size_t value;
         std::string symbol;

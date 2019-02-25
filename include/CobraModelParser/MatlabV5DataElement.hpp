@@ -5,7 +5,7 @@
 #include <ostream>
 
 #include "CobraModelParser/ByteParser.hpp"
-#include "CobraModelParser/MatlabFileV5DataType.hpp"
+#include "CobraModelParser/MatlabV5DataType.hpp"
 
 namespace CobraModelParser {
     class MatlabV5DataElement {
@@ -19,10 +19,11 @@ namespace CobraModelParser {
             size_t dataTypeLookup = readIntegerFromFileStream(file, dataTypeFieldSize, endianIndicator);
             size_t numberOfBytes = readIntegerFromFileStream(file, numberOfBytesFieldSize, endianIndicator);
 
-            MatlabV5DataElement matlabV5DataElement(dataTypeLookup, numberOfBytes);
 
-            matlabV5DataElement.data = std::vector<char>(matlabV5DataElement.size);
-            file.read(&matlabV5DataElement.data[0], matlabV5DataElement.size);
+            MatlabV5DataElement matlabV5DataElement(dataTypeLookup);
+
+            matlabV5DataElement.data = std::vector<char>(numberOfBytes);
+            file.read(&matlabV5DataElement.data[0], numberOfBytes);
 
             return matlabV5DataElement;
         }
@@ -30,16 +31,16 @@ namespace CobraModelParser {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         friend std::ostream &operator<<(std::ostream &os, const MatlabV5DataElement &element) {
-            os << "dataType: " << element.dataType << " size: " << element.size;
+            os << "dataType: " << element.dataType;
             return os;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private:
-        MatlabV5DataElement(size_t typeLookup, size_t dataSize) :
-                dataType(MatlabFileV5DataType::lookUp(typeLookup)), size(dataSize) {};
-
+        MatlabV5DataElement(size_t typeLookup) :
+                dataType(MatlabV5DataType::lookUp(typeLookup)) {}
+                
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         static size_t readIntegerFromFileStream(
@@ -53,8 +54,7 @@ namespace CobraModelParser {
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        MatlabFileV5DataType dataType;
-        size_t size;
+        MatlabV5DataType dataType;
         std::vector<char> data;
 
     };

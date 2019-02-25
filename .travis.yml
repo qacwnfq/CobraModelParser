@@ -1,0 +1,16 @@
+dist: xenial
+
+language: cpp
+
+install: cmake make get-deps libboost-dev libeigen3-dev
+
+compiler:
+  - clang
+  - gcc
+
+script:
+  - mkdir -p build
+  - cd build
+  - cmake -DTEST=ON ..
+  - make
+  - make test
