@@ -12,12 +12,13 @@ namespace CobraModelParser {
     public:
         ByteParser() = delete;
 
-        static size_t parseSize_t(const std::vector<char> &bytes, const std::string &endianIndicator) {
-            if (sizeof(size_t) < bytes.size()) {
+        template<typename T>
+        static T parse(const std::vector<char> &bytes, const std::string &endianIndicator) {
+            if (sizeof(T) < bytes.size()) {
                 throw ByteArrayTooLargeException();
             }
 
-            size_t result = 0;
+            T result = 0;
             if (endianIndicator == "IM") {
                 auto rit = bytes.rbegin();
                 for (size_t bitsToShift = (bytes.size() - 1) * 8; rit != bytes.rend(); ++rit, bitsToShift -= 8) {

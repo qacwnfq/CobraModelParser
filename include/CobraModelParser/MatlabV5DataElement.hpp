@@ -5,23 +5,24 @@
 #include <ostream>
 
 #include "CobraModelParser/ByteParser.hpp"
-#include "CobraModelParser/MatFileV5DataType.hpp"
+#include "CobraModelParser/MatlabFileV5DataType.hpp"
 
 namespace CobraModelParser {
     class MatlabV5DataElement {
     public:
 
-        static MatlabV5DataElement fromFileStream(std::ifstream &file, std::string endianIndicator) {
+        static MatlabV5DataElement fromFileStream(std::ifstream &file, const std::string &endianIndicator) {
 
-            std::vector<char> dataTypeLookup(dataTypeFieldSize);
-            file.read(&dataTypeLookup[0], dataTypeFieldSize);
+            constexpr size_t numberOfBytesFieldSize = 4;
+            constexpr size_t dataTypeFieldSize = 4;
 
-            std::vector<char> numberOfBytes(numberOfBytesFieldSize);
-            file.read(&numberOfBytes[0], numberOfBytesFieldSize);
+            size_t dataTypeLookup = readIntegerFromFileStream(file, dataTypeFieldSize, endianIndicator);
+            size_t numberOfBytes = readIntegerFromFileStream(file, numberOfBytesFieldSize, endianIndicator);
 
-            MatlabV5DataElement matlabV5DataElement(ByteParser::parseSize_t(dataTypeLookup, endianIndicator),
-                                                    ByteParser::parseSize_t(numberOfBytes, endianIndicator));
-//            file.read()
+            MatlabV5DataElement matlabV5DataElement(dataTypeLookup, numberOfBytes);
+
+            matlabV5DataElement.data = std::vector<char>(matlabV5DataElement.size);
+            file.read(&matlabV5DataElement.data[0], matlabV5DataElement.size);
 
             return matlabV5DataElement;
         }
@@ -33,17 +34,28 @@ namespace CobraModelParser {
             return os;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     private:
         MatlabV5DataElement(size_t typeLookup, size_t dataSize) :
-                dataType(MatFileV5DataType::lookUp(typeLookup)), size(dataSize) {};
+                dataType(MatlabFileV5DataType::lookUp(typeLookup)), size(dataSize) {};
 
-        MatFileV5DataType dataType;
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        static size_t readIntegerFromFileStream(
+                std::ifstream &file,
+                const size_t &blockSize,
+                const std::string &endianIndicator) {
+            std::vector<char> byteArray(blockSize);
+            file.read(&byteArray[0], blockSize);
+            return ByteParser::parse<size_t>(byteArray, endianIndicator);
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        MatlabFileV5DataType dataType;
         size_t size;
         std::vector<char> data;
-
-        static constexpr size_t numberOfBytesFieldSize = 4;
-        static constexpr size_t dataTypeFieldSize = 4;
-
 
     };
 
