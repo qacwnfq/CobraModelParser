@@ -1,12 +1,15 @@
 dist: xenial
+sudo: true
 
 language: cpp
-
-install: cmake make get-deps libboost-dev libeigen3-dev
 
 compiler:
   - clang
   - gcc
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y libboost-dev libeigen3-dev
 
 script:
   - mkdir -p build
