@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/test/MatlabV5ParserImplTest.cpp" line="23" mnemonic="0" />
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="CobraModelParser" targetName="ByteParserTest" />
-      <config projectName="CobraModelParser" targetName="ModelTest" />
       <config projectName="CobraModelParser" targetName="MatlabV5ParserImplTest" />
+      <config projectName="CobraModelParser" targetName="ModelTest" />
+      <config projectName="CobraModelParser" targetName="MatlabV5ArrayDataTypeParser" />
+      <config projectName="CobraModelParser" targetName="ByteParserTest" />
       <config projectName="CobraModelParser" targetName="make-nups-test-report-dir" />
     </generated>
   </component>
@@ -15,7 +19,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede7d651-a593-4ac4-b005-53352230e995" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/CobraModelParser/MatlabV5ArrayDataTypeParser.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/MatlabV5ArrayDataTypeParser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CobraModelParser/Exceptions.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/CobraModelParser/Exceptions.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataElement.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataElement.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataType.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataType.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CobraModelParser/MatlabV5ParserImpl.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/CobraModelParser/MatlabV5ParserImpl.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CobraModelParser/Model.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/CobraModelParser/Model.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CobraModelParser/ModelBuilder.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/CobraModelParser/ModelBuilder.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/MatlabV5ParserImplTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/MatlabV5ParserImplTest.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,41 +40,45 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.57117856">
+    <splitter split-orientation="horizontal" split-proportion="0.51124">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/CobraModelParser/ByteParser.hpp">
+            <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataType.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+                <state relative-caret-position="-667">
+                  <caret line="18" column="106" selection-start-line="18" selection-start-column="106" selection-end-line="18" selection-end-column="106" />
                   <folding>
-                    <element signature="e#81#99#0" expanded="true" />
-                    <element signature="e#293#296#0" expanded="true" />
+                    <element signature="e#97#114#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/CobraModelParser/Exceptions.hpp">
+            <entry file="file://$PROJECT_DIR$/test/MatlabV5ArrayDataTypeParser.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="428">
-                  <caret line="80" column="21" lean-forward="true" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+                <state relative-caret-position="285">
+                  <caret line="19" selection-start-line="19" selection-end-line="19" />
                   <folding>
-                    <element signature="e#81#101#0" expanded="true" />
+                    <element signature="e#65#109#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataElement.hpp">
+            <entry file="file://$PROJECT_DIR$/test/ModelTest.cpp">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/test/MatlabV5ParserImplTest.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="840">
-                  <caret line="56" column="27" lean-forward="true" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
+                <state relative-caret-position="345">
+                  <caret line="23" column="57" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
                   <folding>
-                    <element signature="e#99#117#0" expanded="true" />
+                    <element signature="e#74#118#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -69,53 +87,57 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5ArrayDataType.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="990">
-                  <caret line="66" column="45" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
+                <state relative-caret-position="342">
+                  <caret line="91" column="25" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="25" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataElement.hpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="548">
+                  <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
                   <folding>
-                    <element signature="e#109#127#0" expanded="true" />
+                    <element signature="e#99#117#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5ParserImpl.hpp">
+            <entry file="file://$PROJECT_DIR$/include/CobraModelParser/Model.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="212">
-                  <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-                  <folding>
-                    <element signature="e#97#117#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/CobraModelParser/ModelBuilder.hpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-                  <folding>
-                    <element signature="e#85#102#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/.travis.yml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+                <state relative-caret-position="135">
+                  <caret line="24" selection-start-line="24" selection-end-line="24" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/README.md">
+            <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5ArrayDataTypeParser.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="15">
-                  <caret line="1" column="64" selection-start-line="1" selection-start-column="64" selection-end-line="1" selection-end-column="64" />
+                <state relative-caret-position="165">
+                  <caret line="11" selection-start-line="11" selection-end-line="11" />
+                  <folding>
+                    <element signature="e#115#168#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5ArrayDataTypeParser.hpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="315">
+                  <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+                  <folding>
+                    <element signature="e#115#168#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -130,61 +152,17 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/CobraModelParser/DataTypesMapper.hpp">
+            <entry file="file://$PROJECT_DIR$/test/CMakeLists.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="5" selection-start-line="5" selection-end-line="5" />
+                <state relative-caret-position="225">
+                  <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
                 </state>
               </provider>
             </entry>
           </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataType.hpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
-                  <folding>
-                    <element signature="e#97#114#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/MatlabV5ParserImplTest.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
-                  <caret line="26" selection-start-line="26" selection-end-line="26" />
-                  <folding>
-                    <element signature="e#74#118#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/ByteParserTest.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="447">
-                  <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
-                  <folding>
-                    <element signature="e#70#114#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/resources/iJO1366.mat">
-              <provider selected="true" editor-type-id="LargeFileEditor">
-                <state relative-caret-position="15">
-                  <caret column="132" selection-start-column="132" selection-end-column="132" />
-                </state>
-              </provider>
+            <entry file="file://$PROJECT_DIR$/test/MatlabV5ArrayDataTypeParserTest.cpp">
+              <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
         </leaf>
@@ -195,6 +173,7 @@
     <findStrings>
       <find>lookup</find>
       <find>parseSize_</find>
+      <find>l</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -204,31 +183,36 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/include/CobraModelParser/Model.cpp" />
-        <option value="$PROJECT_DIR$/include/CobraModelParser/Model.hpp" />
         <option value="$PROJECT_DIR$/include/CobraModelParser/MatlabParserV5Impl.hpp" />
         <option value="$PROJECT_DIR$/test/resources/unparsableFile.mat" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/test/MatlabV5ParserImplTest.cpp" />
         <option value="$PROJECT_DIR$/include/CobraModelParser/Parser.hpp" />
         <option value="$PROJECT_DIR$/include/CobraModelParser/MatFileV5DataTypes.hpp" />
-        <option value="$PROJECT_DIR$/test/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/test/ModelTest.cpp" />
         <option value="$PROJECT_DIR$/include/CobraModelParser/MatlabV5ArrayDataElement.hpp" />
         <option value="$PROJECT_DIR$/include/CobraModelParser/MatFileV5DataType.hpp" />
-        <option value="$PROJECT_DIR$/include/CobraModelParser/Exceptions.hpp" />
-        <option value="$PROJECT_DIR$/include/CobraModelParser/MatlabV5ArrayDataType.hpp" />
         <option value="$PROJECT_DIR$/include/CobraModelParser/ByteParser.hpp" />
         <option value="$PROJECT_DIR$/test/ByteParserTest.cpp" />
-        <option value="$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataElement.hpp" />
-        <option value="$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataType.hpp" />
+        <option value="$PROJECT_DIR$/include/CobraModelParser/DataTypesMapper.hpp" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/include/CobraModelParser/MatlabV5ParserImpl.hpp" />
         <option value="$PROJECT_DIR$/include/CobraModelParser/ModelBuilder.hpp" />
-        <option value="$PROJECT_DIR$/include/CobraModelParser/DataTypesMapper.hpp" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
-        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/test/MatlabV5ParserImplTest.cpp" />
+        <option value="$PROJECT_DIR$/include/CobraModelParser/Model.hpp" />
+        <option value="$PROJECT_DIR$/include/CobraModelParser/Exceptions.hpp" />
+        <option value="$PROJECT_DIR$/include/CobraModelParser/MatlabV5ArrayDataTypeParser.hpp" />
+        <option value="$PROJECT_DIR$/include/CobraModelParser/MatlabV5ArrayDataType.hpp" />
+        <option value="$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataType.hpp" />
+        <option value="$PROJECT_DIR$/test/MatlabV5ArrayDataTypeParser.cpp" />
+        <option value="$PROJECT_DIR$/test/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataElement.hpp" />
+        <option value="$PROJECT_DIR$/test/MatlabV5ArrayDataTypeParserTest.cpp" />
+        <option value="$PROJECT_DIR$/include/CobraModelParser/MatlabV5ArrayDataTypeParserTest.hpp" />
       </list>
     </option>
   </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="67" />
     <option name="y" value="25" />
@@ -240,7 +224,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -266,18 +249,13 @@
             </path>
             <path>
               <item name="CobraModelParser" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CobraModelParser" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CobraModelParser" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -299,8 +277,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Boost.Test.MatlabV5ParserImpl_parsesModel">
-    <configuration name="BYTEPARSER_SUITE" type="CMakeBoostTestRunConfigurationType" factoryName="Boost Test" temporary="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CobraModelParser" TARGET_NAME="ByteParserTest" RUN_TARGET_PROJECT_NAME="CobraModelParser" RUN_TARGET_NAME="ByteParserTest" TEST_CLASS="BYTEPARSER_SUITE" TEST_MODE="SUITE_TEST">
+  <component name="RunManager" selected="Boost.Test.MATLABV5ARRAYDATATYPEPARSER_SUITE">
+    <configuration name="BYTEPARSER_SUITE" type="CMakeBoostTestRunConfigurationType" factoryName="Boost Test" temporary="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CobraModelParser" TARGET_NAME="ByteParserTest" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CobraModelParser" RUN_TARGET_NAME="ByteParserTest" TEST_CLASS="BYTEPARSER_SUITE" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MATLABV5ARRAYDATATYPEPARSER_SUITE" type="CMakeBoostTestRunConfigurationType" factoryName="Boost Test" temporary="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CobraModelParser" TARGET_NAME="MatlabV5ArrayDataTypeParserTest" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CobraModelParser" RUN_TARGET_NAME="MatlabV5ArrayDataTypeParserTest" TEST_CLASS="MATLABV5ARRAYDATATYPEPARSER_SUITE" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
@@ -318,13 +302,7 @@
         <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SIZE_T_BIG_ENDIAN_8_BYTES" type="CMakeBoostTestRunConfigurationType" factoryName="Boost Test" temporary="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CobraModelParser" TARGET_NAME="ByteParserTest" RUN_TARGET_PROJECT_NAME="CobraModelParser" RUN_TARGET_NAME="ByteParserTest" TEST_CLASS="BYTEPARSER_SUITE" TEST_METHOD="SIZE_T_BIG_ENDIAN_8_BYTES" TEST_MODE="SUITE_TEST">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-        <option name="BeforeTestRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SIZE_T_LITTLE_ENDIAN_8_BYTES" type="CMakeBoostTestRunConfigurationType" factoryName="Boost Test" temporary="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CobraModelParser" TARGET_NAME="ByteParserTest" RUN_TARGET_PROJECT_NAME="CobraModelParser" RUN_TARGET_NAME="ByteParserTest" TEST_CLASS="BYTEPARSER_SUITE" TEST_METHOD="SIZE_T_LITTLE_ENDIAN_8_BYTES" TEST_MODE="SUITE_TEST">
+    <configuration name="SIZE_T_LITTLE_ENDIAN_8_BYTES" type="CMakeBoostTestRunConfigurationType" factoryName="Boost Test" temporary="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CobraModelParser" TARGET_NAME="ByteParserTest" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CobraModelParser" RUN_TARGET_NAME="ByteParserTest" TEST_CLASS="BYTEPARSER_SUITE" TEST_METHOD="SIZE_T_LITTLE_ENDIAN_8_BYTES" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
@@ -357,17 +335,17 @@
       <item itemvalue="Application.ModelTest" />
       <item itemvalue="Boost.Test.BYTEPARSER_SUITE" />
       <item itemvalue="Boost.Test.SIZE_T_LITTLE_ENDIAN_8_BYTES" />
-      <item itemvalue="Boost.Test.SIZE_T_BIG_ENDIAN_8_BYTES" />
       <item itemvalue="Boost.Test.MatlabV5ParserImpl_parsesModel" />
       <item itemvalue="Boost.Test.MatlabV5ParserImpl_suite" />
+      <item itemvalue="Boost.Test.MATLABV5ARRAYDATATYPEPARSER_SUITE" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Boost.Test.MatlabV5ParserImpl_parsesModel" />
+        <item itemvalue="Boost.Test.MATLABV5ARRAYDATATYPEPARSER_SUITE" />
         <item itemvalue="Boost.Test.MatlabV5ParserImpl_suite" />
+        <item itemvalue="Boost.Test.MatlabV5ParserImpl_parsesModel" />
         <item itemvalue="Boost.Test.BYTEPARSER_SUITE" />
         <item itemvalue="Boost.Test.SIZE_T_LITTLE_ENDIAN_8_BYTES" />
-        <item itemvalue="Boost.Test.SIZE_T_BIG_ENDIAN_8_BYTES" />
       </list>
     </recent_temporary>
   </component>
@@ -383,23 +361,12 @@
       <updated>1550926349053</updated>
       <workItem from="1550926350298" duration="10449000" />
       <workItem from="1551006572625" duration="15528000" />
-      <workItem from="1551128704259" duration="6050000" />
+      <workItem from="1551128704259" duration="6310000" />
+      <workItem from="1551214233740" duration="3432000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MatlabV5ParserImpl_parsesModel - 2019.02.25 at 23h 05m 14s.xml">
-      <configuration name="MatlabV5ParserImpl_parsesModel" configurationId="CMakeBoostTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="MatlabV5ParserImpl_parsesModel - 2019.02.25 at 23h 05m 30s.xml">
-      <configuration name="MatlabV5ParserImpl_parsesModel" configurationId="CMakeBoostTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="MatlabV5ParserImpl_parsesModel - 2019.02.25 at 23h 06m 31s.xml">
-      <configuration name="MatlabV5ParserImpl_parsesModel" configurationId="CMakeBoostTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="MatlabV5ParserImpl_parsesModel - 2019.02.25 at 23h 07m 27s.xml">
-      <configuration name="MatlabV5ParserImpl_parsesModel" configurationId="CMakeBoostTestRunConfigurationType" />
-    </history-entry>
     <history-entry file="MatlabV5ParserImpl_parsesModel - 2019.02.25 at 23h 12m 00s.xml">
       <configuration name="MatlabV5ParserImpl_parsesModel" configurationId="CMakeBoostTestRunConfigurationType" />
     </history-entry>
@@ -418,19 +385,31 @@
     <history-entry file="MatlabV5ParserImpl_parsesModel - 2019.02.25 at 23h 28m 28s.xml">
       <configuration name="MatlabV5ParserImpl_parsesModel" configurationId="CMakeBoostTestRunConfigurationType" />
     </history-entry>
+    <history-entry file="MatlabV5ParserImpl_parsesModel - 2019.02.26 at 22h 52m 35s.xml">
+      <configuration name="MatlabV5ParserImpl_parsesModel" configurationId="CMakeBoostTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="MatlabV5ParserImpl_parsesModel - 2019.02.26 at 22h 55m 40s.xml">
+      <configuration name="MatlabV5ParserImpl_parsesModel" configurationId="CMakeBoostTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="MATLABV5ARRAYDATATYPEPARSER_SUITE - 2019.02.26 at 23h 10m 56s.xml">
+      <configuration name="MATLABV5ARRAYDATATYPEPARSER_SUITE" configurationId="CMakeBoostTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="MatlabV5ParserImpl_suite - 2019.02.26 at 23h 12m 17s.xml">
+      <configuration name="MatlabV5ParserImpl_suite" configurationId="CMakeBoostTestRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32027000" />
+    <option name="totallyTimeSpent" value="35719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23408966" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23685667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32937366" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -447,11 +426,11 @@
       <window_info anchor="right" id="Database" order="3" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.14001107" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.23685667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -477,8 +456,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataElement.hpp</url>
-          <line>19</line>
+          <line>28</line>
           <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5ArrayDataTypeParser.hpp</url>
+          <line>8</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -510,24 +494,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/CobraModelParser/matlab2Eigen.hpp" />
-    <entry file="file://$PROJECT_DIR$/test/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/boost/test/tools/old/interface.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="79" column="8" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ModelTest.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -562,9 +532,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/DataTypesMapper.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/ByteParserTest.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
+        <state relative-caret-position="855">
           <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
           <folding>
             <element signature="e#70#114#0" expanded="true" />
@@ -579,40 +563,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/Model.hpp">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/MatlabV5ParserImplTest.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#74#118#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5ParserImpl.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding>
-            <element signature="e#97#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/Exceptions.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="80" column="21" lean-forward="true" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
-          <folding>
-            <element signature="e#81#101#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
@@ -622,54 +576,103 @@
           <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
           <folding>
             <element signature="e#81#99#0" expanded="true" />
-            <element signature="e#293#296#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataElement.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="56" column="27" lean-forward="true" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
-          <folding>
-            <element signature="e#99#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5ArrayDataType.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="66" column="45" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
-          <folding>
-            <element signature="e#109#127#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/DataTypesMapper.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataType.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
-          <folding>
-            <element signature="e#97#114#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/CobraModelParser/ModelBuilder.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="495">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="e#85#102#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5ParserImpl.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding>
+            <element signature="e#97#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/Model.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ModelTest.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5ArrayDataType.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="91" column="25" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/Exceptions.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="74" column="55" selection-start-line="74" selection-start-column="55" selection-end-line="74" selection-end-column="55" />
+          <folding>
+            <element signature="e#81#101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataType.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-667">
+          <caret line="18" column="106" selection-start-line="18" selection-start-column="106" selection-end-line="18" selection-end-column="106" />
+          <folding>
+            <element signature="e#97#114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5DataElement.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
+          <folding>
+            <element signature="e#99#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MatlabV5ArrayDataTypeParser.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#65#109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MatlabV5ParserImplTest.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="57" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
+          <folding>
+            <element signature="e#74#118#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/CobraModelParser/MatlabV5ArrayDataTypeParser.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+          <folding>
+            <element signature="e#115#168#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -681,19 +684,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
+    <entry file="file://$PROJECT_DIR$/test/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="225">
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="64" selection-start-line="1" selection-start-column="64" selection-end-line="1" selection-end-column="64" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/test/MatlabV5ArrayDataTypeParserTest.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

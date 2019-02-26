@@ -8,6 +8,7 @@
 
 #include "CobraModelParser/Exceptions.hpp"
 #include "CobraModelParser/MatlabV5DataElement.hpp"
+#include "CobraModelParser/ModelBuilder.hpp"
 #include "CobraModelParser/Parser.hpp"
 
 namespace CobraModelParser {
@@ -23,11 +24,15 @@ namespace CobraModelParser {
             checkFileExists(filename);
 
             Header header = parseHeader(filename);
-            std::cout << header << std::endl;
 
             auto dataElements = parseBody(filename, header);
+            assert(dataElements.size() == 1);
 
-            return Model();
+            return ModelBuilder()
+                    .setModelDescription(header.headerText)
+                    .setModelOrigin(filename)
+                    .setData(dataElements[0])
+                    .build();
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,7 +45,9 @@ namespace CobraModelParser {
 
             while (!file.eof()) {
                 MatlabV5DataElement dataElement = MatlabV5DataElement::fromFileStream(file, header.endianIndicator);
-                dataElements.push_back(dataElement);
+                if (dataElement.getDataType().getSymbol() != "EMPTY") {
+                    dataElements.push_back(dataElement);
+                }
             }
             file.close();
 

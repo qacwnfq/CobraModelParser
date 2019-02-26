@@ -9,12 +9,23 @@
 namespace CobraModelParser {
     class MatlabV5DataType {
     public:
+        MatlabV5DataType() {}
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        MatlabV5DataType(
+                size_t value,
+                const std::string &symbol,
+                const std::string &description) : value(value), symbol(symbol), description(description) {}
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         static MatlabV5DataType lookUp(size_t lookupValue) {
             MatlabV5DataType matFileV5DataType;
             matFileV5DataType.value = lookupValue;
             switch (lookupValue) {
                 case 0:
-                    matFileV5DataType.symbol = "NULL";
+                    matFileV5DataType.symbol = "EMPTY";
                     matFileV5DataType.description = "Empty Data Type";
                     return matFileV5DataType;
                 case 1:
@@ -119,9 +130,7 @@ namespace CobraModelParser {
             return os;
         }
 
-
     private:
-        MatlabV5DataType() {};
 
         size_t value;
         std::string symbol;

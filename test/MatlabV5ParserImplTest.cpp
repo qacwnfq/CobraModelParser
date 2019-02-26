@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "CobraModelParser/MatlabV5ParserImpl.hpp"
+#include "CobraModelParser/Model.hpp"
 
 BOOST_AUTO_TEST_SUITE(MatlabV5ParserImpl_suite)
 
@@ -22,7 +23,8 @@ BOOST_AUTO_TEST_SUITE(MatlabV5ParserImpl_suite)
 
     BOOST_AUTO_TEST_CASE(MatlabV5ParserImpl_parsesModel) {
         CobraModelParser::MatlabV5ParserImpl parser;
-        parser.parseModelFromFile("iJO1366.mat");
+        CobraModelParser::Model model = parser.parseModelFromFile("iJO1366.mat");
+        BOOST_CHECK(model.getOrigin() == "iJO1366.mat");
     }
 
 BOOST_AUTO_TEST_SUITE_END()

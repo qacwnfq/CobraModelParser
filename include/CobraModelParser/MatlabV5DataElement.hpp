@@ -11,6 +11,15 @@ namespace CobraModelParser {
     class MatlabV5DataElement {
     public:
 
+        MatlabV5DataElement() {}
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        MatlabV5DataElement(const MatlabV5DataType &dataType, const std::vector<char> &rawData) : dataType(dataType),
+                                                                                                  rawData(rawData) {}
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         static MatlabV5DataElement fromFileStream(std::ifstream &file, const std::string &endianIndicator) {
 
             constexpr size_t numberOfBytesFieldSize = 4;
@@ -22,8 +31,8 @@ namespace CobraModelParser {
 
             MatlabV5DataElement matlabV5DataElement(dataTypeLookup);
 
-            matlabV5DataElement.data = std::vector<char>(numberOfBytes);
-            file.read(&matlabV5DataElement.data[0], numberOfBytes);
+            matlabV5DataElement.rawData = std::vector<char>(numberOfBytes);
+            file.read(&matlabV5DataElement.rawData[0], numberOfBytes);
 
             return matlabV5DataElement;
         }
@@ -33,6 +42,14 @@ namespace CobraModelParser {
         friend std::ostream &operator<<(std::ostream &os, const MatlabV5DataElement &element) {
             os << "dataType: " << element.dataType;
             return os;
+        }
+
+        const MatlabV5DataType &getDataType() const {
+            return dataType;
+        }
+
+        const std::vector<char> &getRawData() const {
+            return rawData;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,7 +72,7 @@ namespace CobraModelParser {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         MatlabV5DataType dataType;
-        std::vector<char> data;
+        std::vector<char> rawData;
 
     };
 

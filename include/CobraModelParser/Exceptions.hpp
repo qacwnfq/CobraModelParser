@@ -55,7 +55,7 @@ namespace CobraModelParser {
 
         const char *what() const throw() override {
             std::string message =
-                    "Tried to parse unkown data type. Lookup value was " + std::to_string(lookupValue) + ".";
+                    "Tried to parse unkown rawData type. Lookup value was " + std::to_string(lookupValue) + ".";
             char *buffer = new char[message.size() + 1];
             std::memcpy(buffer, message.c_str(), message.size() + 1);
             return buffer;
@@ -79,6 +79,25 @@ namespace CobraModelParser {
     };
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    class UnexpectedDataTypeException : public std::exception {
+    public:
+        UnexpectedDataTypeException(const std::string &expectedSymbol, const std::string &actualSymbol)
+                : expectedSymbol(expectedSymbol), actualSymbol(actualSymbol) {}
+
+        const char *what() const throw() override {
+            std::string message = "Expected Data Type " + expectedSymbol + ", but got " + actualSymbol + ".";
+            char *buffer = new char[message.size() + 1];
+            std::memcpy(buffer, message.c_str(), message.size() + 1);
+            return buffer;
+        }
+    private:
+        std::string expectedSymbol;
+        std::string actualSymbol;
+    };
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     class UnknownEndianIndicatorException : public std::exception {
     public:
