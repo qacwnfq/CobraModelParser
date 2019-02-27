@@ -27,8 +27,8 @@ namespace CobraModelParser {
             return *this;
         }
 
-        Model build() {
-            Model model = MatlabV5ArrayDataTypeParser::parseModelFromMatlabV5DataElement(data);
+        Model build(const std::string& endianIndicator) {
+            Model model = MatlabV5ArrayDataTypeParser::parseModelFromMatlabV5DataElement(data, endianIndicator);
             model.origin = modelOrigin;
             model.description = modelDescription;
             return model;

@@ -130,6 +130,16 @@ namespace CobraModelParser {
             return os;
         }
 
+        bool operator==(const MatlabV5DataType &rhs) const {
+            return value == rhs.value &&
+                   symbol == rhs.symbol &&
+                   description == rhs.description;
+        }
+
+        bool operator!=(const MatlabV5DataType &rhs) const {
+            return !(rhs == *this);
+        }
+
     private:
 
         size_t value;

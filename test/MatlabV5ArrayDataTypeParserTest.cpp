@@ -12,7 +12,7 @@ BOOST_AUTO_TEST_SUITE(MATLABV5ARRAYDATATYPEPARSER_SUITE)
         CobraModelParser::MatlabV5DataElement corruptElement(type, std::vector<char>());
 
         BOOST_CHECK_THROW(
-                CobraModelParser::MatlabV5ArrayDataTypeParser::parseModelFromMatlabV5DataElement(corruptElement),
+                CobraModelParser::MatlabV5ArrayDataTypeParser::parseModelFromMatlabV5DataElement(corruptElement, "IM"),
                 CobraModelParser::UnexpectedDataTypeException);
     }
 

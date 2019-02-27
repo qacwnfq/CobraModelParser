@@ -10,7 +10,18 @@
 namespace CobraModelParser {
     class MatlabV5ArrayDataType {
     public:
-        static MatlabV5ArrayDataType lookup(size_t lookupValue) {
+        MatlabV5ArrayDataType() {}
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        MatlabV5ArrayDataType(size_t value,
+                              const std::string &symbol,
+                              const std::string &description) : value(value), symbol(symbol),
+                                                                description(description) {}
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        static MatlabV5ArrayDataType lookUp(size_t lookupValue) {
             MatlabV5ArrayDataType matlabV5ArrayDataType;
             matlabV5ArrayDataType.value = lookupValue;
             switch (lookupValue) {
@@ -66,6 +77,14 @@ namespace CobraModelParser {
                     matlabV5ArrayDataType.symbol = "mxUINT32_CLASS";
                     matlabV5ArrayDataType.description = "32-bit, unsigned integer";
                     return matlabV5ArrayDataType;
+                case 14:
+                    matlabV5ArrayDataType.symbol = "mxINT64_CLASS";
+                    matlabV5ArrayDataType.description = "33-bit, signed integer";
+                    return matlabV5ArrayDataType;
+                case 15:
+                    matlabV5ArrayDataType.symbol = "mxUINT64_CLASS";
+                    matlabV5ArrayDataType.description = "64-bit, unsigned integer";
+                    return matlabV5ArrayDataType;
                 default:
                     throw UnknownDataTypeException(lookupValue);
             }
@@ -89,8 +108,6 @@ namespace CobraModelParser {
         }
 
     private:
-        MatlabV5ArrayDataType() {};
-
         size_t value;
         std::string symbol;
         std::string description;

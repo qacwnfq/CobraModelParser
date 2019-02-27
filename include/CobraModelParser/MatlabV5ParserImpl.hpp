@@ -32,7 +32,7 @@ namespace CobraModelParser {
                     .setModelDescription(header.headerText)
                     .setModelOrigin(filename)
                     .setData(dataElements[0])
-                    .build();
+                    .build(header.endianIndicator);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
