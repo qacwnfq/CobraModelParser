@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <string>
 
+#include "CobraModelParser/MatlabV5ArrayDataType.hpp"
+#include "CobraModelParser/MatlabV5DataType.hpp"
+
 namespace CobraModelParser {
 
     class FileNotFoundException : public std::exception {
@@ -82,18 +85,40 @@ namespace CobraModelParser {
 
     class UnexpectedDataTypeException : public std::exception {
     public:
-        UnexpectedDataTypeException(const std::string &expectedSymbol, const std::string &actualSymbol)
-                : expectedSymbol(expectedSymbol), actualSymbol(actualSymbol) {}
+        UnexpectedDataTypeException(const MatlabV5DataType &expectedType, const MatlabV5DataType &actualType)
+                : expectedType(expectedType), actualType(actualType) {}
 
         const char *what() const throw() override {
-            std::string message = "Expected Data Type " + expectedSymbol + ", but got " + actualSymbol + ".";
+            std::string message =
+                    "Expected Data Type " + expectedType.getSymbol() + ", but got " + actualType.getSymbol() + ".";
             char *buffer = new char[message.size() + 1];
             std::memcpy(buffer, message.c_str(), message.size() + 1);
             return buffer;
         }
+
     private:
-        std::string expectedSymbol;
-        std::string actualSymbol;
+        MatlabV5DataType expectedType;
+        MatlabV5DataType actualType;
+    };
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    class UnexpectedArrayDataTypeException : public std::exception {
+    public:
+        UnexpectedArrayDataTypeException(const MatlabV5ArrayDataType &expectedType, const MatlabV5ArrayDataType &actualType)
+                : expectedType(expectedType), actualType(actualType) {}
+
+        const char *what() const throw() override {
+            std::string message =
+                    "Expected Data Type " + expectedType.getSymbol() + ", but got " + actualType.getSymbol() + ".";
+            char *buffer = new char[message.size() + 1];
+            std::memcpy(buffer, message.c_str(), message.size() + 1);
+            return buffer;
+        }
+
+    private:
+        MatlabV5ArrayDataType expectedType;
+        MatlabV5ArrayDataType actualType;
     };
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,7 +126,7 @@ namespace CobraModelParser {
 
     class UnknownEndianIndicatorException : public std::exception {
     public:
-        UnknownEndianIndicatorException(const std::string& indicator) : indicator(indicator) {}
+        UnknownEndianIndicatorException(const std::string &indicator) : indicator(indicator) {}
 
         const char *what() const throw() override {
             std::string message = "Endian Indicator " + indicator + " is unkown.";

@@ -6,6 +6,7 @@
 
 #include "CobraModelParser/ByteParser.hpp"
 #include "CobraModelParser/MatlabV5DataType.hpp"
+#include "CobraModelParser/MatlabV5DataTypeTable.hpp"
 
 namespace CobraModelParser {
     class MatlabV5DataElement {
@@ -56,7 +57,7 @@ namespace CobraModelParser {
 
     private:
         MatlabV5DataElement(size_t typeLookup) :
-                dataType(MatlabV5DataType::lookUp(typeLookup)) {}
+                dataType(MatlabV5DataTypeTable::lookUp(typeLookup)) {}
                 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
