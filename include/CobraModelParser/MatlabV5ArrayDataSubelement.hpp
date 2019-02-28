@@ -30,8 +30,35 @@ namespace CobraModelParser {
             MatlabV5ArrayDataSubelement::matlabV5ArrayDataType = matlabV5ArrayDataType;
         }
 
+        bool isComplexFlag() const {
+            return complexFlag;
+        }
+
+        void setComplexFlag(bool complexFlag) {
+            MatlabV5ArrayDataSubelement::complexFlag = complexFlag;
+        }
+
+        bool isGlobalFlag() const {
+            return globalFlag;
+        }
+
+        void setGlobalFlag(bool globalFlag) {
+            MatlabV5ArrayDataSubelement::globalFlag = globalFlag;
+        }
+
+        bool isLogicalFlag() const {
+            return logicalFlag;
+        }
+
+        void setLogicalFlag(bool logicalFlag) {
+            MatlabV5ArrayDataSubelement::logicalFlag = logicalFlag;
+        }
+
     private:
         MatlabV5ArrayDataType matlabV5ArrayDataType;
+        bool complexFlag;
+        bool globalFlag;
+        bool logicalFlag;
 
         std::size_t numberOfBytes;
         std::vector<char> data;

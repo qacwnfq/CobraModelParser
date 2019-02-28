@@ -15,7 +15,7 @@ namespace CobraModelParser {
         template<typename T>
         static T parse(const std::vector<char> &bytes, const std::string &endianIndicator) {
             if (sizeof(T) < bytes.size()) {
-                throw ByteArrayTooLargeException();
+                throw ByteArrayTooLargeException<T>();
             }
 
             T result = 0;

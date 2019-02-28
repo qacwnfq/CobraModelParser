@@ -32,12 +32,12 @@ namespace CobraModelParser {
 
     class UnexpectedFileTypeException : public std::exception {
     public:
-        UnexpectedFileTypeException(const std::string &expectedFileType, const std::string &filename) :
+        UnexpectedFileTypeException(const std::string &expectedFileType, const std::string &actualFileType) :
                 expectedFileType(expectedFileType),
-                filename(filename) {}
+                actualFileType(actualFileType) {}
 
         const char *what() const throw() override {
-            std::string message = "File " + filename + " is not of type " + expectedFileType + ".";
+            std::string message = "File " + actualFileType + " is not of type " + expectedFileType + ".";
             char *buffer = new char[message.size() + 1];
             std::memcpy(buffer, message.c_str(), message.size() + 1);
             return buffer;
@@ -45,7 +45,7 @@ namespace CobraModelParser {
 
     private:
         std::string expectedFileType;
-        std::string filename;
+        std::string actualFileType;
 
     };
 
@@ -105,7 +105,8 @@ namespace CobraModelParser {
 
     class UnexpectedArrayDataTypeException : public std::exception {
     public:
-        UnexpectedArrayDataTypeException(const MatlabV5ArrayDataType &expectedType, const MatlabV5ArrayDataType &actualType)
+        UnexpectedArrayDataTypeException(const MatlabV5ArrayDataType &expectedType,
+                                         const MatlabV5ArrayDataType &actualType)
                 : expectedType(expectedType), actualType(actualType) {}
 
         const char *what() const throw() override {
@@ -122,7 +123,6 @@ namespace CobraModelParser {
     };
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     class UnknownEndianIndicatorException : public std::exception {
     public:
@@ -141,6 +141,27 @@ namespace CobraModelParser {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    class UnexpectedSizeException : public std::exception {
+    public:
+        UnexpectedSizeException(size_t expectedSize, size_t actualSize) : expectedSize(expectedSize),
+                                                                          actualSize(actualSize) {}
+
+        const char *what() const throw() override {
+            std::string message =
+                    "Expected Size " + std::to_string(expectedSize) + ", but got " + std::to_string(actualSize) + ".";
+            char *buffer = new char[message.size() + 1];
+            std::memcpy(buffer, message.c_str(), message.size() + 1);
+            return buffer;
+        }
+
+    private:
+        size_t expectedSize;
+        size_t actualSize;
+    };
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    template<typename T>
     class ByteArrayTooLargeException : public std::exception {
     public:
 
