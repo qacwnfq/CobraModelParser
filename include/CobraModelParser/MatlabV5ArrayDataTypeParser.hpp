@@ -125,12 +125,12 @@ namespace CobraModelParser {
             matlabV5ArrayDataSubelement.setNumberOfBytes(arrayFlagSize);
 
             std::vector<bool> flags = parseArrayFlags(data, endianIndicator);
-            matlabV5ArrayDataSubelement.setComplexFlag(flags[0]);
-            matlabV5ArrayDataSubelement.setGlobalFlag(flags[1]);
-            matlabV5ArrayDataSubelement.setLogicalFlag(flags[2]);
+//            matlabV5ArrayDataSubelement.setComplexFlag(flags[0]);
+//            matlabV5ArrayDataSubelement.setGlobalFlag(flags[1]);
+//            matlabV5ArrayDataSubelement.setLogicalFlag(flags[2]);
 
             const MatlabV5ArrayDataType &arrayDataType = parseArrayClass(data, endianIndicator);
-            matlabV5ArrayDataSubelement.setMatlabV5ArrayDataType(arrayDataType);
+//            matlabV5ArrayDataSubelement.setMatlabV5ArrayDataType(arrayDataType);
 
 
             return matlabV5ArrayDataSubelement;
