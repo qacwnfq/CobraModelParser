@@ -18,8 +18,9 @@ namespace CobraModelParser::MatlabV5 {
         }
 
     private:
+        friend class TagParser;
 
-        Tag() {}
+        Tag(const DataType &type, size_t numberOfBytes) : type(type), numberOfBytes(numberOfBytes) {}
 
         DataType type;
         size_t numberOfBytes;

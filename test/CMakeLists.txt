@@ -16,6 +16,7 @@ set(LIBRARY_TESTS_SOURCES
         ModelTest.cpp
         MatlabV5ParserImplTest.cpp
         MatlabV5ArrayDataTypeParserTest.cpp
+        TagParserTest.cpp
         )
 
 set(TEST_REPORTS_DIR "reports")
