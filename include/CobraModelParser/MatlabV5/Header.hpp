@@ -7,9 +7,8 @@
 namespace CobraModelParser {
         class Header {
         public:
-
             Header(ByteQueue &byteQueue, ByteParser &byteParser) {
-                std::vector<byte> headerBytes = byteQueue.popByteBlocks(totalSize);
+                std::vector<byte> headerBytes = byteQueue.popByteBlocks(sizeInByteBlocks);
                 headerText = byteParser.parseString(
                         std::vector<byte>(headerBytes.begin(), headerBytes.begin() + headerTextSize));
 
@@ -21,7 +20,7 @@ namespace CobraModelParser {
 
                 endianIndicator = byteParser.parseString(
                         std::vector<byte>(headerBytes.begin() + headerTextSize + versionFlagSize,
-                                          headerBytes.begin() + totalSize)
+                                          headerBytes.end())
                 );
 
                 byteParser.setEndianIndicator(endianIndicator);
@@ -56,7 +55,8 @@ namespace CobraModelParser {
             static constexpr size_t headerTextSize = 124;
             static constexpr size_t versionFlagSize = 2;
             static constexpr size_t endianIndicatorFlagSize = 2;
-            static constexpr size_t totalSize = headerTextSize + versionFlagSize + endianIndicatorFlagSize;
+            static constexpr size_t sizeInByteBlocks = (headerTextSize + versionFlagSize + endianIndicatorFlagSize) /
+                    ByteQueue::BYTE_BLOCK_SIZE;
 
             std::string headerText;
             std::string version;

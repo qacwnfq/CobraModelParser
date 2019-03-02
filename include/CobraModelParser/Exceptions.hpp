@@ -52,7 +52,7 @@ namespace CobraModelParser {
 
         const char *what() const throw() override {
             std::string message =
-                    "Tried to parseNumericType unkown rawData type. Lookup value was " + std::to_string(lookupValue) + ".";
+                    "Tried to parse unkown rawData type. Lookup value was " + std::to_string(lookupValue) + ".";
             char *buffer = new char[message.size() + 1];
             std::memcpy(buffer, message.c_str(), message.size() + 1);
             return buffer;
@@ -147,7 +147,7 @@ namespace CobraModelParser {
     class ByteArrayTooLargeException : public std::exception {
     public:
         const char *what() const throw() override {
-            std::string message = "ByteArray too large to parseNumericType into return type.";
+            std::string message = "ByteArray too large to parse into return type.";
             char *buffer = new char[message.size() + 1];
             std::memcpy(buffer, message.c_str(), message.size() + 1);
             return buffer;

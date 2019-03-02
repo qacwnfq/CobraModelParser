@@ -2,13 +2,14 @@
 #define COBRAMODELPARSER_MATLABV5_TAGPARSER_HPP
 
 #include "CobraModelParser/ByteParser.hpp"
+#include "CobraModelParser/ByteQueue.hpp"
 #include "CobraModelParser/MatlabV5/Tag.hpp"
 #include "CobraModelParser/MatlabV5/DataTypeTable.hpp"
 
 namespace CobraModelParser::MatlabV5 {
     class TagParser {
     public:
-        TagParser(ByteParser byteParser) : byteParser(byteParser) {}
+        TagParser(const ByteParser& byteParser) : byteParser(byteParser) {}
 
 
         Tag parseTag(const std::vector<byte> &bytes) {
@@ -16,14 +17,19 @@ namespace CobraModelParser::MatlabV5 {
                 throw UnexpectedSizeException(TAG_SIZE, bytes.size());
             }
 
-            size_t dataTypeLookUp = byteParser.parseNumericType<size_t>(
-                    std::vector<byte>(bytes.begin(), bytes.begin() + 4));
-            DataType dataType = DataTypeTable::lookUp(dataTypeLookUp);
             size_t numberOfBytes = byteParser.parseNumericType<size_t>(
                     std::vector<byte>(bytes.begin() + 4, bytes.end()));
 
-            return Tag(dataType, numberOfBytes);
+            size_t dataTypeLookUp = byteParser.parseNumericType<size_t>(
+                    std::vector<byte>(bytes.begin(), bytes.begin() + 4));
 
+            DataType dataType = DataTypeTable::lookUp(dataTypeLookUp);
+
+            return Tag(dataType, numberOfBytes);
+        }
+
+        Tag parseTag(ByteQueue &byteQueue) {
+            return parseTag(byteQueue.popByteBlock());
         }
 
     private:

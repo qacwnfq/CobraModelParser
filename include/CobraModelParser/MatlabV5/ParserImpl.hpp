@@ -11,42 +11,30 @@
 #include "CobraModelParser/ModelBuilder.hpp"
 #include "CobraModelParser/Parser.hpp"
 #include "CobraModelParser/MatlabV5/Header.hpp"
+#include "CobraModelParser/MatlabV5/Body.hpp"
 
 namespace CobraModelParser::MatlabV5 {
-
     class ParserImpl : public Parser {
     public:
         Model parseModelFromFile(std::string filename) override {
             ByteParser byteParser;
             ByteQueue byteQueue = FileLoader::loadFileContentsAsByteQueue(filename);
-            Header header(byteQueue, byteParser);
 
+            Header header(byteQueue, byteParser);
+            Body body(byteQueue, byteParser);
 //            auto dataElements = parseBody(filename, header);
 //            assert(dataElements.size() == 1);
 //
             return ModelBuilder()
-                    .setModelDescription(header.getHeaderText())
                     .setModelOrigin(filename)
-//                    .setData(dataElements[0])
+                    .setModelDescription(header.getHeaderText())
                     .build();
         }
 
-//        std::vector<MatlabV5DataElement> parseBody(const std::string &filename, const Header &header) const {
-//            std::ifstream file(filename, std::ios::binary | std::ios::in);
-//            file.seekg(Header::totalSize, std::ifstream::beg);
-//
-//            std::vector<MatlabV5DataElement> dataElements;
+    private:
+        ModelBuilder addBodyDataToModel(ModelBuilder& modelBuilder) {
 
-//            while (!file.eof()) {
-//                MatlabV5DataElement dataElement = MatlabV5DataElement::fromFileStream(file, header.endianIndicator);
-//                if (dataElement.getDataType().getSymbol() != "EMPTY") {
-//                    dataElements.push_back(dataElement);
-//                }
-//            }
-//            file.close();
-
-//            return dataElements;
-//        }
+        }
     };
 }
 

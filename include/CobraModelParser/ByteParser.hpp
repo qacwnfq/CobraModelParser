@@ -19,7 +19,7 @@ namespace CobraModelParser {
         ByteParser() = default;
 
         template<typename T>
-        T parseNumericType(std::vector<byte> bytes) {
+        T parseNumericType(std::vector<byte> bytes) const {
             if (sizeof(T) < bytes.size()) {
                 throw ByteArrayTooLargeException<T>();
             }
@@ -35,16 +35,16 @@ namespace CobraModelParser {
             auto it = bytes.begin();
             for (size_t bitsToShift = (bytes.size() - 1) * BYTE_SIZE;
                  it != bytes.end(); ++it, bitsToShift -= BYTE_SIZE) {
-                result |= (static_cast<unsigned byte>(*it) << bitsToShift);
+                result |= (*it << bitsToShift);
             }
             return result;
         }
 
-        std::string parseString(const std::vector<byte> &bytes) {
+        std::string parseString(const std::vector<byte> &bytes) const {
             return std::string(bytes.begin(), bytes.end());
         }
 
-        std::string parseHexadeximalAsString(std::vector<byte> bytes) {
+        std::string parseHexadeximalAsString(std::vector<byte> bytes) const {
             if (endianIndicator != "IM" && endianIndicator != "MI") {
                 throw UnknownEndianIndicatorException(endianIndicator);
             }

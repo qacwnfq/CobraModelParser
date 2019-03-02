@@ -2,6 +2,7 @@
 #define COBRAMODELPARSER_MATLABV5_TAG_HPP
 
 #include <vector>
+#include <ostream>
 
 #include "CobraModelParser/Exceptions.hpp"
 #include "CobraModelParser/MatlabV5/DataType.hpp"
@@ -11,6 +12,11 @@ namespace CobraModelParser::MatlabV5 {
     public:
         const DataType &getType() const {
             return type;
+        }
+
+        friend std::ostream &operator<<(std::ostream &os, const Tag &tag) {
+            os << "type: " << tag.type << " numberOfBytes: " << tag.numberOfBytes;
+            return os;
         }
 
         size_t getNumberOfBytes() const {

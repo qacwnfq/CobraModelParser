@@ -11,6 +11,8 @@
 namespace CobraModelParser {
     class ByteQueue {
     public:
+        static constexpr size_t BYTE_BLOCK_SIZE = 8;
+
         ByteQueue(const std::vector<byte> &bytes) : bytes(bytes) {
             if (bytes.size() % BYTE_BLOCK_SIZE != 0) {
                 throw ByteQueueConstructionException(bytes.size(), BYTE_BLOCK_SIZE);
@@ -53,7 +55,6 @@ namespace CobraModelParser {
         }
 
     private:
-        static constexpr size_t BYTE_BLOCK_SIZE = 8;
         std::vector<byte> bytes;
     };
 }
