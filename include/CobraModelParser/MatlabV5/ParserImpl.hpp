@@ -13,29 +13,31 @@
 #include "CobraModelParser/MatlabV5/Header.hpp"
 #include "CobraModelParser/MatlabV5/Body.hpp"
 
-namespace CobraModelParser::MatlabV5 {
-    class ParserImpl : public Parser {
-    public:
-        Model parseModelFromFile(std::string filename) override {
-            ByteParser byteParser;
-            ByteQueue byteQueue = FileLoader::loadFileContentsAsByteQueue(filename);
+namespace CobraModelParser {
+    namespace MatlabV5 {
+        class ParserImpl : public Parser {
+        public:
+            Model parseModelFromFile(std::string filename) override {
+                ByteParser byteParser;
+                ByteQueue byteQueue = FileLoader::loadFileContentsAsByteQueue(filename);
 
-            Header header(byteQueue, byteParser);
-            Body body(byteQueue, byteParser);
-//            auto dataElements = parseBody(filename, header);
-//            assert(dataElements.size() == 1);
-//
-            return ModelBuilder()
-                    .setModelOrigin(filename)
-                    .setModelDescription(header.getHeaderText())
-                    .build();
-        }
+                Header header(byteQueue, byteParser);
+                Body body(byteQueue, byteParser);
+                //            auto dataElements = parseBody(filename, header);
+                //            assert(dataElements.size() == 1);
+                //
+                return ModelBuilder()
+                .setModelOrigin(filename)
+                .setModelDescription(header.getHeaderText())
+                .build();
+            }
 
-    private:
-        ModelBuilder addBodyDataToModel(ModelBuilder& modelBuilder) {
+        private:
+            ModelBuilder addBodyDataToModel(ModelBuilder& modelBuilder) {
 
-        }
-    };
+            }
+        };
+    }
 }
 
 #endif //COBRAMODELPARSER_MATLABV5_PARSERIMPL_HPP

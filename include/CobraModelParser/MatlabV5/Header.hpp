@@ -5,6 +5,7 @@
 #include "CobraModelParser/ByteQueue.hpp"
 
 namespace CobraModelParser {
+    namespace MatlabV5 {
         class Header {
         public:
             Header(ByteQueue &byteQueue, ByteParser &byteParser) {
@@ -56,12 +57,13 @@ namespace CobraModelParser {
             static constexpr size_t versionFlagSize = 2;
             static constexpr size_t endianIndicatorFlagSize = 2;
             static constexpr size_t sizeInByteBlocks = (headerTextSize + versionFlagSize + endianIndicatorFlagSize) /
-                    ByteQueue::BYTE_BLOCK_SIZE;
+                                                       ByteQueue::BYTE_BLOCK_SIZE;
 
             std::string headerText;
             std::string version;
             std::string endianIndicator;
         };
+    }
 }
 
 #endif //COBRAMODELPARSER_MATLABV5_HEADER_HPP
