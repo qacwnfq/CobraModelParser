@@ -1,6 +1,7 @@
 #ifndef COBRAMODELPARSER_MODELBUILDER_HPP
 #define COBRAMODELPARSER_MODELBUILDER_HPP
 
+#include <Eigen/Core>
 #include <vector>
 
 #include "CobraModelParser/Model.hpp"
@@ -22,23 +23,26 @@ namespace CobraModelParser {
             return *this;
         }
 
-        ModelBuilder &setData(const MatlabV5DataElement &data) {
-            this->data = data;
+        ModelBuilder &setData(const Eigen::MatrixXd &A, const Eigen::VectorXd &b) {
+            this->A = A;
+            this->b = b;
             return *this;
         }
 
         Model build() {
-            Model model; //MatlabV5ArrayDataTypeParser::parseModelFromMatlabV5DataElement(data, endianIndicator);
+            Model model;
             model.origin = modelOrigin;
             model.description = modelDescription;
+            model.setA(A);
+            model.setB(b);
             return model;
         }
 
     private:
         std::string modelOrigin;
         std::string modelDescription;
-        MatlabV5DataElement data;
-
+        Eigen::VectorXd b;
+        Eigen::MatrixXd A;
     };
 }
 

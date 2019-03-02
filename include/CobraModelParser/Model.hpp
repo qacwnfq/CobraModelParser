@@ -15,32 +15,33 @@ namespace CobraModelParser {
             return description;
         }
 
-        void setModelDescription(const std::string &description) {
-            Model::description = description;
-        }
-
-        void setA(const Eigen::MatrixXd &A) {
-            Model::A = A;
-        }
-
         const Eigen::VectorXd &getB() const {
             return b;
-        }
-
-        void setB(const Eigen::VectorXd &b) {
-            Model::b = b;
         }
 
         const std::string &getOrigin() const {
             return origin;
         }
 
+    private:
+        friend class ModelBuilder;
+
+        void setA(const Eigen::MatrixXd &A) {
+            Model::A = A;
+        }
+
+        void setModelDescription(const std::string &description) {
+            Model::description = description;
+        }
+
+
+        void setB(const Eigen::VectorXd &b) {
+            Model::b = b;
+        }
+
         void setOrigin(const std::string &origin) {
             Model::origin = origin;
         }
-
-    private:
-        friend class ModelBuilder;
 
         Eigen::MatrixXd A;
         Eigen::VectorXd b;

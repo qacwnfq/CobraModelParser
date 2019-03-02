@@ -3,7 +3,7 @@
 
 #include <boost/test/included/unit_test.hpp>
 
-#include "CobraModelParser/MatlabV5/MatlabV5ParserImpl.hpp"
+#include "CobraModelParser/MatlabV5/ParserImpl.hpp"
 
 BOOST_AUTO_TEST_SUITE(MatlabV5ParserImpl_suite)
 

@@ -5,8 +5,8 @@
 #include <stdio.h>
 #include <string>
 
-#include "CobraModelParser/MatlabV5/MatlabV5ArrayDataType.hpp"
-#include "CobraModelParser/MatlabV5/MatlabV5DataType.hpp"
+#include "CobraModelParser/MatlabV5/ArrayType.hpp"
+#include "CobraModelParser/MatlabV5/DataType.hpp"
 
 namespace CobraModelParser {
 
@@ -28,8 +28,6 @@ namespace CobraModelParser {
 
     };
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     class UnexpectedFileTypeException : public std::exception {
     public:
         UnexpectedFileTypeException(const std::string &expectedFileType) :
@@ -46,8 +44,6 @@ namespace CobraModelParser {
         std::string expectedFileType;
 
     };
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     class UnknownDataTypeException : public std::exception {
     public:
@@ -67,8 +63,6 @@ namespace CobraModelParser {
 
     };
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     class ReservedDataTypeException : public std::exception {
     public:
         const char *what() const throw() override {
@@ -78,8 +72,6 @@ namespace CobraModelParser {
             return buffer;
         }
     };
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     class UnexpectedDataTypeException : public std::exception {
     public:
@@ -98,8 +90,6 @@ namespace CobraModelParser {
         MatlabV5DataType expectedType;
         MatlabV5DataType actualType;
     };
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     class UnexpectedArrayDataTypeException : public std::exception {
     public:
@@ -120,8 +110,6 @@ namespace CobraModelParser {
         MatlabV5ArrayDataType actualType;
     };
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     class UnknownEndianIndicatorException : public std::exception {
     public:
         UnknownEndianIndicatorException(const std::string &indicator) : indicator(indicator) {}
@@ -136,8 +124,6 @@ namespace CobraModelParser {
     private:
         std::string indicator;
     };
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     class UnexpectedSizeException : public std::exception {
     public:
@@ -157,8 +143,6 @@ namespace CobraModelParser {
         size_t actualSize;
     };
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     template<typename T>
     class ByteArrayTooLargeException : public std::exception {
     public:
@@ -169,8 +153,6 @@ namespace CobraModelParser {
             return buffer;
         }
     };
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     class ByteQueueConstructionException : public std::exception {
     public:

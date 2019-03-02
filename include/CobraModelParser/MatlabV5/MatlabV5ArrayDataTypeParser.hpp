@@ -3,12 +3,11 @@
 
 #include <algorithm>
 
-#include "MatlabV5ArrayDataSubelement.hpp"
-#include "MatlabV5ArrayDataType.hpp"
-#include "MatlabV5ArrayDataTypeTable.hpp"
+#include "ArrayType.hpp"
+#include "ArrayTypeTable.hpp"
 #include "MatlabV5ArrayFlagsElement.hpp"
 #include "MatlabV5DataElement.hpp"
-#include "MatlabV5DataType.hpp"
+#include "DataType.hpp"
 #include "MatlabV5ArrayDimensionsElement.hpp"
 #include "CobraModelParser/Model.hpp"
 
@@ -39,7 +38,7 @@ namespace CobraModelParser {
 //        parseArrayDimensions(std::vector<char> &data, const std::string &endianIndicator) {
 //            MatlabV5ArrayDimensionsElement arrayDimensionsElement;
 //
-//            const MatlabV5DataType &arrayDimensionsType = parseDataType(data, endianIndicator);
+//            const DataType &arrayDimensionsType = parseDataType(data, endianIndicator);
 //            arrayDimensionsElement.setType(arrayDimensionsType);
 //            std::cout << "dimensions array has type: " << arrayDimensionsType << std::endl;
 //
@@ -49,8 +48,6 @@ namespace CobraModelParser {
 //
 //            return arrayDimensionsElement;
 //        }
-//
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //        static std::vector<char>
 //        pop4Bytes(std::vector<char> &data, const std::string &endianIndicator) {
@@ -67,8 +64,6 @@ namespace CobraModelParser {
 //            return byteBlock;
 //        }
 //
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
 //        static std::vector<char> pop8Bytes(std::vector<char> &data, const std::string &endianIndicator) {
 //            std::vector<char> byteBlock;
 //            for (int i = 0; i < 8; ++i) {
@@ -83,33 +78,25 @@ namespace CobraModelParser {
 //            return byteBlock;
 //        }
 //
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
 //        static void popUndefinedBytes(std::vector<char> &data, size_t numberOfBytesToPop) {
 //            for(size_t i=0; i<numberOfBytesToPop; ++i) {
 //                data.pop_back();
 //            }
 //        }
 //
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-//        static MatlabV5DataType
+//        static DataType
 //        parseDataType(std::vector<char> &data, const std::string &endianIndicator) {
 //            std::vector<char> rawArrayFlagType = pop4Bytes(data, endianIndicator);
-//            const MatlabV5DataType &dataType = MatlabV5DataTypeTable::lookUp(
+//            const DataType &dataType = DataTypeTable::lookUp(
 //                    ByteParser::parseNumericType<size_t>(rawArrayFlagType));
 //            return dataType;
 //        }
-//
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //        static size_t
 //        parseElementSize(std::vector<char> &data, const std::string &endianIndicator) {
 //            std::vector<char> rawArrayFlagSize = pop4Bytes(data, endianIndicator);
 //            return ByteParser::parseNumericType<size_t>(rawArrayFlagSize);
 //        }
-//
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //        static std::vector<bool> parseArrayFlags(std::vector<char> &data, const std::string &endianIndicator) {
 //            std::vector<char> flags = pop4Bytes(data, endianIndicator);
@@ -123,23 +110,19 @@ namespace CobraModelParser {
 //            return results;
 //        }
 //
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-//        static MatlabV5ArrayDataType parseArrayClass(std::vector<char> &data, const std::string &endianIndicator) {
+//        static ArrayType parseArrayClass(std::vector<char> &data, const std::string &endianIndicator) {
 ////            std::vector<char> rawArrayClass = pop8Bytes(data, endianIndicator);
 ////            size_t lookUpValue = ByteParser::parseNumericType<size_t>(rawArrayClass);
-//            return MatlabV5ArrayDataTypeTable::lookUp(lookUpValue);
+//            return ArrayTypeTable::lookUp(lookUpValue);
 //        }
-//
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //        static MatlabV5ArrayFlagsElement
 //        parseArrayFlagsElement(std::vector<char> &data, const std::string &endianIndicator) {
 //            MatlabV5ArrayFlagsElement arrayFlagsElement;
 //
-//            const MatlabV5DataType &arrayFlagType = parseDataType(data, endianIndicator);
-//            if (arrayFlagType != MatlabV5DataTypeTable::lookUp(6)) {
-//                throw UnexpectedDataTypeException(MatlabV5DataTypeTable::lookUp(6), arrayFlagType);
+//            const DataType &arrayFlagType = parseDataType(data, endianIndicator);
+//            if (arrayFlagType != DataTypeTable::lookUp(6)) {
+//                throw UnexpectedDataTypeException(DataTypeTable::lookUp(6), arrayFlagType);
 //            }
 //            arrayFlagsElement.setType(arrayFlagType);
 //
@@ -154,17 +137,15 @@ namespace CobraModelParser {
 //            arrayFlagsElement.setGlobalFlag(flags[1]);
 //            arrayFlagsElement.setLogicalFlag(flags[2]);
 //
-//            const MatlabV5ArrayDataType &arrayDataType = parseArrayClass(data, endianIndicator);
+//            const ArrayType &arrayDataType = parseArrayClass(data, endianIndicator);
 //            arrayFlagsElement.setMatlabV5ArrayDataType(arrayDataType);
 //
 //            return arrayFlagsElement;
 //
 //        }
 //
-//        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-//        static void assertDataElementIsOfTypeMATLABArray(const MatlabV5DataType &actualType) {
-//            auto expectedType = MatlabV5DataTypeTable::lookUp(14);
+//        static void assertDataElementIsOfTypeMATLABArray(const DataType &actualType) {
+//            auto expectedType = DataTypeTable::lookUp(14);
 //            if (expectedType != actualType) {
 //                throw UnexpectedDataTypeException(expectedType, actualType);
 //            }

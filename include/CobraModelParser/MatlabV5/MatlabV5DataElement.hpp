@@ -5,8 +5,8 @@
 #include <ostream>
 
 #include "CobraModelParser/ByteParser.hpp"
-#include "MatlabV5DataType.hpp"
-#include "MatlabV5DataTypeTable.hpp"
+#include "DataType.hpp"
+#include "DataTypeTable.hpp"
 
 namespace CobraModelParser {
     class MatlabV5DataElement {
@@ -18,27 +18,6 @@ namespace CobraModelParser {
 
         MatlabV5DataElement(const MatlabV5DataType &dataType, const std::vector<char> &rawData) : dataType(dataType),
                                                                                                   rawData(rawData) {}
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        static MatlabV5DataElement fromFileStream(std::ifstream &file, const std::string &endianIndicator) {
-
-            constexpr size_t numberOfBytesFieldSize = 4;
-            constexpr size_t dataTypeFieldSize = 4;
-
-//            size_t dataTypeLookup = readIntegerFromFileStream(file, dataTypeFieldSize, endianIndicator);
-//            size_t numberOfBytes = readIntegerFromFileStream(file, numberOfBytesFieldSize, endianIndicator);
-
-
-//            MatlabV5DataElement matlabV5DataElement(dataTypeLookup);
-//
-//            matlabV5DataElement.rawData = std::vector<char>(numberOfBytes);
-//            file.read(&matlabV5DataElement.rawData[0], numberOfBytes);
-
-            return MatlabV5DataElement();
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         friend std::ostream &operator<<(std::ostream &os, const MatlabV5DataElement &element) {
             os << "dataType: " << element.dataType;
