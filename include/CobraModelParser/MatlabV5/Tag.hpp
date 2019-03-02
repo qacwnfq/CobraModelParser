@@ -9,9 +9,6 @@
 namespace CobraModelParser::MatlabV5 {
     class Tag {
     public:
-        Tag(const std::vector<char> &bytes) {
-        }
-
         const DataType &getType() const {
             return type;
         }
@@ -21,6 +18,8 @@ namespace CobraModelParser::MatlabV5 {
         }
 
     private:
+
+        Tag() {}
 
         DataType type;
         size_t numberOfBytes;

@@ -5,32 +5,22 @@
 
 #include "ArrayType.hpp"
 #include "ArrayTypeTable.hpp"
-#include "MatlabV5ArrayFlagsElement.hpp"
-#include "MatlabV5DataElement.hpp"
 #include "DataType.hpp"
-#include "MatlabV5ArrayDimensionsElement.hpp"
 #include "CobraModelParser/Model.hpp"
 
 namespace CobraModelParser {
     class MatlabV5ArrayDataTypeParser {
-    public:
-        static Model
-        parseModelFromMatlabV5DataElement(const MatlabV5DataElement &matlabV5DataElement,
-                                          const std::string &endianIndicator) {
-
+//        parseModelFromMatlabV5DataElement(const MatlabV5DataElement &matlabV5DataElement,
+//                                          const std::string &endianIndicator) {
 //            assertDataElementIsOfTypeMATLABArray(matlabV5DataElement.getDataType());
-
 //            std::vector<char> data = matlabV5DataElement.getRawData();
 //            std::reverse(data.begin(), data.end());
 //
 //            const MatlabV5ArrayDataSubelement &arrayFlags = parseArrayFlagsElement(data, endianIndicator);
 //            const MatlabV5ArrayDimensionsElement &dimensionsElement = parseArrayDimensions(data, endianIndicator);
-
-            Model model;
-            return model;
-        }
-
-
+//            Model model;
+//            return model;
+//        }
 //    private:
 //
 //

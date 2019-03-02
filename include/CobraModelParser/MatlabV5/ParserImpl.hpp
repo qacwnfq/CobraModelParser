@@ -31,11 +31,11 @@ namespace CobraModelParser::MatlabV5 {
                     .build();
         }
 
-        std::vector<MatlabV5DataElement> parseBody(const std::string &filename, const Header &header) const {
+//        std::vector<MatlabV5DataElement> parseBody(const std::string &filename, const Header &header) const {
 //            std::ifstream file(filename, std::ios::binary | std::ios::in);
 //            file.seekg(Header::totalSize, std::ifstream::beg);
 //
-            std::vector<MatlabV5DataElement> dataElements;
+//            std::vector<MatlabV5DataElement> dataElements;
 
 //            while (!file.eof()) {
 //                MatlabV5DataElement dataElement = MatlabV5DataElement::fromFileStream(file, header.endianIndicator);
@@ -45,8 +45,8 @@ namespace CobraModelParser::MatlabV5 {
 //            }
 //            file.close();
 
-            return dataElements;
-        }
+//            return dataElements;
+//        }
     };
 }
 

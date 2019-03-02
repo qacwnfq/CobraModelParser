@@ -9,9 +9,9 @@ namespace CobraModelParser {
         public:
 
             Header(ByteQueue &byteQueue, ByteParser &byteParser) {
-                std::vector<char> headerBytes = byteQueue.popByteBlocks(totalSize);
+                std::vector<byte> headerBytes = byteQueue.popByteBlocks(totalSize);
                 headerText = byteParser.parseString(
-                        std::vector<char>(headerBytes.begin(), headerBytes.begin() + headerTextSize));
+                        std::vector<byte>(headerBytes.begin(), headerBytes.begin() + headerTextSize));
 
                 const std::string expectedType = "MATLAB 5.0 MAT-file";
                 if (std::mismatch(expectedType.begin(), expectedType.end(),
@@ -20,14 +20,14 @@ namespace CobraModelParser {
                 }
 
                 endianIndicator = byteParser.parseString(
-                        std::vector<char>(headerBytes.begin() + headerTextSize + versionFlagSize,
+                        std::vector<byte>(headerBytes.begin() + headerTextSize + versionFlagSize,
                                           headerBytes.begin() + totalSize)
                 );
 
                 byteParser.setEndianIndicator(endianIndicator);
 
                 version = byteParser.parseHexadeximalAsString(
-                        std::vector<char>(headerBytes.begin() + headerTextSize,
+                        std::vector<byte>(headerBytes.begin() + headerTextSize,
                                           headerBytes.begin() + headerTextSize + versionFlagSize)
                 );
 

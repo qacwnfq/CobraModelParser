@@ -15,7 +15,7 @@ namespace CobraModelParser {
         static ByteQueue loadFileContentsAsByteQueue(const std::string &file) {
             checkFileExists(file);
             std::ifstream filestream(file, std::ios::binary | std::ios::in);
-            std::vector<char> contents((std::istreambuf_iterator<char>(filestream)),
+            std::vector<byte> contents((std::istreambuf_iterator<char>(filestream)),
                                        (std::istreambuf_iterator<char>()));
             return ByteQueue(contents);
         }

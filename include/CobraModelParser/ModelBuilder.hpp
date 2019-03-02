@@ -5,8 +5,6 @@
 #include <vector>
 
 #include "CobraModelParser/Model.hpp"
-#include "CobraModelParser/MatlabV5/MatlabV5ArrayDataTypeParser.hpp"
-#include "CobraModelParser/MatlabV5/MatlabV5DataElement.hpp"
 
 namespace CobraModelParser {
 

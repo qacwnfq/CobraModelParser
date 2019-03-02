@@ -9,7 +9,7 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
 
     BOOST_AUTO_TEST_CASE(SIZE_T_LITTLE_ENDIAN_1_BYTE) {
         size_t expected = 122;
-        std::vector<char> bytes = { 122 };
+        std::vector<CobraModelParser::byte> bytes = { 122 };
 
         CobraModelParser::ByteParser byteParser("IM");
         size_t actual = byteParser.parseNumericType<size_t>(bytes);
@@ -18,7 +18,7 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
 
     BOOST_AUTO_TEST_CASE(SIZE_T_BIG_ENDIAN_1_BYTE) {
         size_t expected = 6;
-        std::vector<char> bytes = { 6 };
+        std::vector<CobraModelParser::byte> bytes = { 6 };
 
         CobraModelParser::ByteParser byteParser("MI");
         size_t actual = byteParser.parseNumericType<size_t>(bytes);
@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
 
     BOOST_AUTO_TEST_CASE(SIZE_T_LITTLE_ENDIAN_2_BYTES) {
         size_t expected = 513;
-        std::vector<char> bytes = { 0x01, 0x02};
+        std::vector<CobraModelParser::byte> bytes = { 0x01, 0x02};
 
         CobraModelParser::ByteParser byteParser("IM");
         size_t actual = byteParser.parseNumericType<size_t>(bytes);
@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
 
     BOOST_AUTO_TEST_CASE(SIZE_T_BIG_ENDIAN_2_BYTES) {
         size_t expected = 258;
-        std::vector<char> bytes = { 0x01, 0x02};
+        std::vector<CobraModelParser::byte> bytes = { 0x01, 0x02};
 
         CobraModelParser::ByteParser byteParser("MI");
         size_t actual = byteParser.parseNumericType<size_t>(bytes);
@@ -45,7 +45,7 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
 
     BOOST_AUTO_TEST_CASE(SIZE_T_LITTLE_ENDIAN_4_BYTES) {
         size_t expected = 16909060;
-        std::vector<char> bytes = { 0x04, 0x03, 0x02, 0x01};
+        std::vector<CobraModelParser::byte> bytes = { 0x04, 0x03, 0x02, 0x01};
 
         CobraModelParser::ByteParser byteParser("IM");
         size_t actual = byteParser.parseNumericType<size_t>(bytes);
@@ -54,7 +54,7 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
 
     BOOST_AUTO_TEST_CASE(SIZE_T_BIG_ENDIAN_4_BYTES) {
         size_t expected = 16909060;
-        std::vector<char> bytes = { 0x01, 0x02, 0x03, 0x04};
+        std::vector<CobraModelParser::byte> bytes = { 0x01, 0x02, 0x03, 0x04};
 
         CobraModelParser::ByteParser byteParser("MI");
         size_t actual = byteParser.parseNumericType<size_t>(bytes);
