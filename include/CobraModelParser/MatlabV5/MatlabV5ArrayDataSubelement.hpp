@@ -1,7 +1,8 @@
 #ifndef COBRAMODELPARSER_MATLABV5ARRAYDATASUBELEMENT_HPP
 #define COBRAMODELPARSER_MATLABV5ARRAYDATASUBELEMENT_HPP
 
-#include "CobraModelParser/MatlabV5ArrayDataType.hpp"
+#include <ostream>
+#include "MatlabV5ArrayDataType.hpp"
 #include "MatlabV5DataType.hpp"
 
 namespace CobraModelParser {
@@ -21,6 +22,11 @@ namespace CobraModelParser {
 
         void setType(const MatlabV5DataType &type) {
             MatlabV5ArrayDataSubelement::type = type;
+        }
+
+        friend std::ostream &operator<<(std::ostream &os, const MatlabV5ArrayDataSubelement &subelement) {
+            os << "numberOfBytes: " << subelement.numberOfBytes << " type: " << subelement.type;
+            return os;
         }
 
     private:

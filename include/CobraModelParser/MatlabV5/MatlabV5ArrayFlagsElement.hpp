@@ -39,6 +39,13 @@ namespace CobraModelParser {
             MatlabV5ArrayFlagsElement::logicalFlag = logicalFlag;
         }
 
+        friend std::ostream &operator<<(std::ostream &os, const MatlabV5ArrayFlagsElement &element) {
+            os << static_cast<const MatlabV5ArrayDataSubelement &>(element) << " matlabV5ArrayDataType: "
+               << element.matlabV5ArrayDataType << " complexFlag: " << element.complexFlag << " globalFlag: "
+               << element.globalFlag << " logicalFlag: " << element.logicalFlag;
+            return os;
+        }
+
     private:
         MatlabV5ArrayDataType matlabV5ArrayDataType;
         bool complexFlag;

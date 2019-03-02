@@ -5,8 +5,8 @@
 #include <ostream>
 
 #include "CobraModelParser/ByteParser.hpp"
-#include "CobraModelParser/MatlabV5DataType.hpp"
-#include "CobraModelParser/MatlabV5DataTypeTable.hpp"
+#include "MatlabV5DataType.hpp"
+#include "MatlabV5DataTypeTable.hpp"
 
 namespace CobraModelParser {
     class MatlabV5DataElement {
@@ -26,16 +26,16 @@ namespace CobraModelParser {
             constexpr size_t numberOfBytesFieldSize = 4;
             constexpr size_t dataTypeFieldSize = 4;
 
-            size_t dataTypeLookup = readIntegerFromFileStream(file, dataTypeFieldSize, endianIndicator);
-            size_t numberOfBytes = readIntegerFromFileStream(file, numberOfBytesFieldSize, endianIndicator);
+//            size_t dataTypeLookup = readIntegerFromFileStream(file, dataTypeFieldSize, endianIndicator);
+//            size_t numberOfBytes = readIntegerFromFileStream(file, numberOfBytesFieldSize, endianIndicator);
 
 
-            MatlabV5DataElement matlabV5DataElement(dataTypeLookup);
+//            MatlabV5DataElement matlabV5DataElement(dataTypeLookup);
+//
+//            matlabV5DataElement.rawData = std::vector<char>(numberOfBytes);
+//            file.read(&matlabV5DataElement.rawData[0], numberOfBytes);
 
-            matlabV5DataElement.rawData = std::vector<char>(numberOfBytes);
-            file.read(&matlabV5DataElement.rawData[0], numberOfBytes);
-
-            return matlabV5DataElement;
+            return MatlabV5DataElement();
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,14 +61,14 @@ namespace CobraModelParser {
                 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        static size_t readIntegerFromFileStream(
-                std::ifstream &file,
-                const size_t &blockSize,
-                const std::string &endianIndicator) {
-            std::vector<char> byteArray(blockSize);
-            file.read(&byteArray[0], blockSize);
-            return ByteParser::parse<size_t>(byteArray, endianIndicator);
-        }
+//        static size_t readIntegerFromFileStream(
+//                std::ifstream &file,
+//                const size_t &blockSize,
+//                const std::string &endianIndicator) {
+//            std::vector<char> byteArray(blockSize);
+//            file.read(&byteArray[0], blockSize);
+//            return ByteParser::parseNumericType<size_t>(byteArray, endianIndicator);
+//        }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -2,7 +2,7 @@
 #define COBRAMODELPARSER_MATLABV5ARRAYDATATYPETABLE_HPP
 
 #include "CobraModelParser/Exceptions.hpp"
-#include "CobraModelParser/MatlabV5ArrayDataType.hpp"
+#include "MatlabV5ArrayDataType.hpp"
 
 namespace CobraModelParser {
 

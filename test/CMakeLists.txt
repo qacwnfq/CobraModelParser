@@ -11,6 +11,8 @@ project(CobraModelParserTest CXX)
 
 set(LIBRARY_TESTS_SOURCES
         ByteParserTest.cpp
+        ByteQueueTest.cpp
+        FileLoaderTest.cpp
         ModelTest.cpp
         MatlabV5ParserImplTest.cpp
         MatlabV5ArrayDataTypeParserTest.cpp

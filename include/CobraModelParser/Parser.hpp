@@ -12,18 +12,6 @@ namespace CobraModelParser {
     class Parser {
     public:
         virtual Model parseModelFromFile(std::string filename) = 0;
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        void checkFileExists(std::string filename) const {
-            std::ifstream file(filename, std::ios::binary | std::ios::in);
-            bool fileExists = !!file;
-            file.close();
-            if (!fileExists) {
-                throw FileNotFoundException(filename);
-            }
-        }
-
     };
 
 }

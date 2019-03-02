@@ -1,7 +1,7 @@
 #ifndef COBRAMODELPARSER_MATLABV5DATATYPETABLE_HPP
 #define COBRAMODELPARSER_MATLABV5DATATYPETABLE_HPP
 
-#include "CobraModelParser/MatlabV5DataType.hpp"
+#include "MatlabV5DataType.hpp"
 #include "CobraModelParser/Exceptions.hpp"
 
 namespace CobraModelParser {

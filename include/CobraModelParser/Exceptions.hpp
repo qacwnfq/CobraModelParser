@@ -5,8 +5,8 @@
 #include <stdio.h>
 #include <string>
 
-#include "CobraModelParser/MatlabV5ArrayDataType.hpp"
-#include "CobraModelParser/MatlabV5DataType.hpp"
+#include "CobraModelParser/MatlabV5/MatlabV5ArrayDataType.hpp"
+#include "CobraModelParser/MatlabV5/MatlabV5DataType.hpp"
 
 namespace CobraModelParser {
 
@@ -32,12 +32,11 @@ namespace CobraModelParser {
 
     class UnexpectedFileTypeException : public std::exception {
     public:
-        UnexpectedFileTypeException(const std::string &expectedFileType, const std::string &actualFileType) :
-                expectedFileType(expectedFileType),
-                actualFileType(actualFileType) {}
+        UnexpectedFileTypeException(const std::string &expectedFileType) :
+                expectedFileType(expectedFileType) {}
 
         const char *what() const throw() override {
-            std::string message = "File " + actualFileType + " is not of type " + expectedFileType + ".";
+            std::string message = "File is not of type " + expectedFileType + ".";
             char *buffer = new char[message.size() + 1];
             std::memcpy(buffer, message.c_str(), message.size() + 1);
             return buffer;
@@ -45,7 +44,6 @@ namespace CobraModelParser {
 
     private:
         std::string expectedFileType;
-        std::string actualFileType;
 
     };
 
@@ -58,7 +56,7 @@ namespace CobraModelParser {
 
         const char *what() const throw() override {
             std::string message =
-                    "Tried to parse unkown rawData type. Lookup value was " + std::to_string(lookupValue) + ".";
+                    "Tried to parseNumericType unkown rawData type. Lookup value was " + std::to_string(lookupValue) + ".";
             char *buffer = new char[message.size() + 1];
             std::memcpy(buffer, message.c_str(), message.size() + 1);
             return buffer;
@@ -164,14 +162,34 @@ namespace CobraModelParser {
     template<typename T>
     class ByteArrayTooLargeException : public std::exception {
     public:
-
         const char *what() const throw() override {
-            std::string message = "ByteArray too large to parse into return type.";
+            std::string message = "ByteArray too large to parseNumericType into return type.";
             char *buffer = new char[message.size() + 1];
             std::memcpy(buffer, message.c_str(), message.size() + 1);
             return buffer;
         }
     };
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    class ByteQueueConstructionException : public std::exception {
+    public:
+        ByteQueueConstructionException(size_t size, size_t byteBlockSize) : size(size), byteBlockSize(byteBlockSize) {}
+
+        const char *what() const throw() override {
+            std::string message =
+                    "Number of Bytes is " + std::to_string(size) + ", but number of bytes needs to be multiple of " +
+                    std::to_string(byteBlockSize) + ".";
+            char *buffer = new char[message.size() + 1];
+            std::memcpy(buffer, message.c_str(), message.size() + 1);
+            return buffer;
+        }
+
+    private:
+        size_t size;
+        size_t byteBlockSize;
+    };
+
 
 }
 

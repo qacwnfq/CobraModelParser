@@ -11,7 +11,8 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
         size_t expected = 122;
         std::vector<char> bytes = { 122 };
 
-        size_t actual = CobraModelParser::ByteParser::parse<size_t>(bytes, "IM");
+        CobraModelParser::ByteParser byteParser("IM");
+        size_t actual = byteParser.parseNumericType<size_t>(bytes);
         BOOST_CHECK(actual == expected);
     }
 
@@ -19,7 +20,8 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
         size_t expected = 6;
         std::vector<char> bytes = { 6 };
 
-        size_t actual = CobraModelParser::ByteParser::parse<size_t>(bytes, "MI");
+        CobraModelParser::ByteParser byteParser("MI");
+        size_t actual = byteParser.parseNumericType<size_t>(bytes);
         BOOST_CHECK(actual == expected);
     }
 
@@ -27,7 +29,8 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
         size_t expected = 513;
         std::vector<char> bytes = { 0x01, 0x02};
 
-        size_t actual = CobraModelParser::ByteParser::parse<size_t>(bytes, "IM");
+        CobraModelParser::ByteParser byteParser("IM");
+        size_t actual = byteParser.parseNumericType<size_t>(bytes);
         BOOST_CHECK(actual == expected);
     }
 
@@ -35,7 +38,8 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
         size_t expected = 258;
         std::vector<char> bytes = { 0x01, 0x02};
 
-        size_t actual = CobraModelParser::ByteParser::parse<size_t>(bytes, "MI");
+        CobraModelParser::ByteParser byteParser("MI");
+        size_t actual = byteParser.parseNumericType<size_t>(bytes);
         BOOST_CHECK(actual == expected);
     }
 
@@ -43,7 +47,8 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
         size_t expected = 16909060;
         std::vector<char> bytes = { 0x04, 0x03, 0x02, 0x01};
 
-        size_t actual = CobraModelParser::ByteParser::parse<size_t>(bytes, "IM");
+        CobraModelParser::ByteParser byteParser("IM");
+        size_t actual = byteParser.parseNumericType<size_t>(bytes);
         BOOST_CHECK(actual == expected);
     }
 
@@ -51,7 +56,8 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
         size_t expected = 16909060;
         std::vector<char> bytes = { 0x01, 0x02, 0x03, 0x04};
 
-        size_t actual = CobraModelParser::ByteParser::parse<size_t>(bytes, "MI");
+        CobraModelParser::ByteParser byteParser("MI");
+        size_t actual = byteParser.parseNumericType<size_t>(bytes);
         BOOST_CHECK(actual == expected);
     }
 

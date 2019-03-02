@@ -4,8 +4,8 @@
 #include <vector>
 
 #include "CobraModelParser/Model.hpp"
-#include "CobraModelParser/MatlabV5ArrayDataTypeParser.hpp"
-#include "CobraModelParser/MatlabV5DataElement.hpp"
+#include "CobraModelParser/MatlabV5/MatlabV5ArrayDataTypeParser.hpp"
+#include "CobraModelParser/MatlabV5/MatlabV5DataElement.hpp"
 
 namespace CobraModelParser {
 
@@ -27,8 +27,8 @@ namespace CobraModelParser {
             return *this;
         }
 
-        Model build(const std::string& endianIndicator) {
-            Model model = MatlabV5ArrayDataTypeParser::parseModelFromMatlabV5DataElement(data, endianIndicator);
+        Model build() {
+            Model model; //MatlabV5ArrayDataTypeParser::parseModelFromMatlabV5DataElement(data, endianIndicator);
             model.origin = modelOrigin;
             model.description = modelDescription;
             return model;

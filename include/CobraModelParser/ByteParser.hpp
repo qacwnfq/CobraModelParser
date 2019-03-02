@@ -10,32 +10,65 @@
 namespace CobraModelParser {
     class ByteParser {
     public:
-        ByteParser() = delete;
+
+        explicit ByteParser(const std::string &endianIndicator) {
+            setEndianIndicator(endianIndicator);
+        }
+
+        ByteParser() = default;
 
         template<typename T>
-        static T parse(const std::vector<char> &bytes, const std::string &endianIndicator) {
+        T parseNumericType(std::vector<char> bytes) {
             if (sizeof(T) < bytes.size()) {
                 throw ByteArrayTooLargeException<T>();
             }
-
-            T result = 0;
-            if (endianIndicator == "IM") {
-                auto rit = bytes.rbegin();
-                for (size_t bitsToShift = (bytes.size() - 1) * 8; rit != bytes.rend(); ++rit, bitsToShift -= 8) {
-                    result |= (static_cast<unsigned char>(*rit) << bitsToShift);
-                }
-            } else if (endianIndicator == "MI") {
-                auto it = bytes.begin();
-                for (size_t bitsToShift = (bytes.size() - 1) * 8; it != bytes.end(); ++it, bitsToShift -= 8) {
-                    result |= (static_cast<unsigned char>(*it) << bitsToShift);
-                }
-            } else {
+            if (endianIndicator != "IM" && endianIndicator != "MI") {
                 throw UnknownEndianIndicatorException(endianIndicator);
             }
 
+            if (this->endianIndicator == "IM") {
+                std::reverse(bytes.begin(), bytes.end());
+            }
+
+            T result = 0;
+            auto it = bytes.begin();
+            for (size_t bitsToShift = (bytes.size() - 1) * BYTE_SIZE;
+                 it != bytes.end(); ++it, bitsToShift -= BYTE_SIZE) {
+                result |= (static_cast<unsigned char>(*it) << bitsToShift);
+            }
             return result;
         }
 
+        std::string parseString(const std::vector<char> &bytes) {
+            return std::string(bytes.begin(), bytes.end());
+        }
+
+        std::string parseHexadeximalAsString(std::vector<char> bytes) {
+            if (endianIndicator != "IM" && endianIndicator != "MI") {
+                throw UnknownEndianIndicatorException(endianIndicator);
+            }
+
+            if (this->endianIndicator == "IM") {
+                std::reverse(bytes.begin(), bytes.end());
+            }
+            std::stringstream hexadecimal;
+            for(auto const& byte: bytes) {
+                hexadecimal << std::hex << (int)byte;
+            }
+            return hexadecimal.str();
+        }
+
+        void setEndianIndicator(const std::string &endianIndicator) {
+            if (endianIndicator != "IM" && endianIndicator != "MI") {
+                throw UnknownEndianIndicatorException(endianIndicator);
+            }
+            ByteParser::endianIndicator = endianIndicator;
+        }
+
+    private:
+        std::string endianIndicator = "UNDEFINED";
+
+        static constexpr size_t BYTE_SIZE = 8;
 
     };
 }
