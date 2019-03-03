@@ -13,15 +13,15 @@ namespace CobraModelParser {
     public:
         static constexpr size_t BYTE_BLOCK_SIZE = 8;
 
-        ByteQueue(const std::vector<byte> &bytes) : bytes(bytes) {
+        explicit ByteQueue(const std::vector<Byte> &bytes) : bytes(bytes) {
             if (bytes.size() % BYTE_BLOCK_SIZE != 0) {
                 throw ByteQueueConstructionException(bytes.size(), BYTE_BLOCK_SIZE);
             }
             std::reverse(this->bytes.begin(), this->bytes.end());
         }
 
-        std::vector<byte> popByteBlock() {
-            std::vector<byte> byteBlock;
+        std::vector<Byte> popByteBlock() {
+            std::vector<Byte> byteBlock;
             for (size_t i = 0; i < BYTE_BLOCK_SIZE; ++i) {
                 byteBlock.push_back(bytes[bytes.size() - 1]);
                 bytes.pop_back();
@@ -29,10 +29,10 @@ namespace CobraModelParser {
             return byteBlock;
         }
 
-        std::vector<byte> popByteBlocks(size_t numberOfByteBlocksToParse) {
-            std::vector<byte> byteBlocks;
+        std::vector<Byte> popByteBlocks(size_t numberOfByteBlocksToParse) {
+            std::vector<Byte> byteBlocks;
             for (size_t i = 0; i < numberOfByteBlocksToParse; ++i) {
-                std::vector<byte> byteBlock = popByteBlock();
+                std::vector<Byte> byteBlock = popByteBlock();
                 byteBlocks.insert(byteBlocks.end(), byteBlock.begin(), byteBlock.end());
             }
             return byteBlocks;
@@ -50,12 +50,12 @@ namespace CobraModelParser {
             }
         }
 
-        size_t getRemainingBytes() {
+        size_t getRemainingBytes() const {
             return bytes.size();
         }
 
     private:
-        std::vector<byte> bytes;
+        std::vector<Byte> bytes;
     };
 }
 

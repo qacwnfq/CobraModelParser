@@ -14,10 +14,16 @@ BOOST_AUTO_TEST_SUITE(MatlabV5ParserImpl_suite)
                           CobraModelParser::UnexpectedFileTypeException);
     }
 
-    BOOST_AUTO_TEST_CASE(MatlabV5ParserImpl_parsesModel) {
+    BOOST_AUTO_TEST_CASE(MatlabV5ParserImpl_parsesModel_iJO1366) {
         CobraModelParser::MatlabV5::ParserImpl parser;
         CobraModelParser::Model model = parser.parseModelFromFile("iJO1366.mat");
         BOOST_CHECK(model.getOrigin() == "iJO1366.mat");
+    }
+
+    BOOST_AUTO_TEST_CASE(MatlabV5ParserImpl_parsesModel_iJO1366_2) {
+        CobraModelParser::MatlabV5::ParserImpl parser;
+        CobraModelParser::Model model = parser.parseModelFromFile("iJO1366_2.mat");
+        BOOST_CHECK(model.getOrigin() == "iJO1366_2.mat");
     }
 
 BOOST_AUTO_TEST_SUITE_END()

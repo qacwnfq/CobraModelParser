@@ -11,6 +11,9 @@
 namespace CobraModelParser {
     class ByteParser {
     public:
+        const std::string &getEndianIndicator() const {
+            return endianIndicator;
+        }
 
         explicit ByteParser(const std::string &endianIndicator) {
             setEndianIndicator(endianIndicator);
@@ -19,7 +22,7 @@ namespace CobraModelParser {
         ByteParser() = default;
 
         template<typename T>
-        T parseNumericType(std::vector<byte> bytes) const {
+        T parseNumericType(std::vector<Byte> bytes) const {
             if (sizeof(T) < bytes.size()) {
                 throw ByteArrayTooLargeException<T>();
             }
@@ -40,11 +43,11 @@ namespace CobraModelParser {
             return result;
         }
 
-        std::string parseString(const std::vector<byte> &bytes) const {
+        std::string parseString(const std::vector<Byte> &bytes) const {
             return std::string(bytes.begin(), bytes.end());
         }
 
-        std::string parseHexadeximalAsString(std::vector<byte> bytes) const {
+        std::string parseHexadeximalAsString(std::vector<Byte> bytes) const {
             if (endianIndicator != "IM" && endianIndicator != "MI") {
                 throw UnknownEndianIndicatorException(endianIndicator);
             }
@@ -57,6 +60,13 @@ namespace CobraModelParser {
                 hexadecimal << std::hex << (int)byte;
             }
             return hexadecimal.str();
+        }
+
+        bool getBitFromByte(Byte byte, size_t index) const {
+            if(index<0 || index > 7) {
+                throw IndexException(7, index);
+            }
+            return static_cast<bool>((byte >> index) & 0x01);
         }
 
         void setEndianIndicator(const std::string &endianIndicator) {

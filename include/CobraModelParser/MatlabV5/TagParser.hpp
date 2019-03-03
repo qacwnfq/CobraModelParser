@@ -10,26 +10,25 @@ namespace CobraModelParser {
     namespace MatlabV5 {
         class TagParser {
         public:
-            TagParser(const ByteParser& byteParser) : byteParser(byteParser) {}
+            explicit TagParser(const ByteParser& byteParser) : byteParser(byteParser) {}
 
-
-            Tag parseTag(const std::vector<byte> &bytes) {
+            Tag parseTag(const std::vector<Byte> &bytes) const {
                 if (bytes.size() != TAG_SIZE) {
                     throw UnexpectedSizeException(TAG_SIZE, bytes.size());
                 }
 
-                size_t numberOfBytes = byteParser.parseNumericType<size_t>(
-                        std::vector<byte>(bytes.begin() + 4, bytes.end()));
+                auto numberOfBytes = byteParser.parseNumericType<size_t>(
+                        std::vector<Byte>(bytes.begin() + 4, bytes.end()));
 
-                size_t dataTypeLookUp = byteParser.parseNumericType<size_t>(
-                        std::vector<byte>(bytes.begin(), bytes.begin() + 4));
+                auto dataTypeLookUp = byteParser.parseNumericType<size_t>(
+                        std::vector<Byte>(bytes.begin(), bytes.begin() + 4));
 
                 DataType dataType = DataTypeTable::lookUp(dataTypeLookUp);
 
                 return Tag(dataType, numberOfBytes);
             }
 
-            Tag parseTag(ByteQueue &byteQueue) {
+            Tag parseTag(ByteQueue &byteQueue) const {
                 return parseTag(byteQueue.popByteBlock());
             }
 

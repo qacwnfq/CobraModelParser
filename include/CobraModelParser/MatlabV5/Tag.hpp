@@ -11,6 +11,7 @@ namespace CobraModelParser {
     namespace MatlabV5 {
         class Tag {
         public:
+            Tag() {}
             const DataType &getType() const {
                 return type;
             }

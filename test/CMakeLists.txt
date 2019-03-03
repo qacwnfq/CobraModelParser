@@ -1,7 +1,10 @@
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
+configure_file(resources/AntCore.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 configure_file(resources/constraintBasedModel.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
+configure_file(resources/ecoli_core_model.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 configure_file(resources/iJO1366.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
+configure_file(resources/iJO1366_2.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 configure_file(resources/matrix.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 configure_file(resources/unparsableFile.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 configure_file(resources/vector.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
@@ -15,7 +18,6 @@ set(LIBRARY_TESTS_SOURCES
         FileLoaderTest.cpp
         ModelTest.cpp
         MatlabV5ParserImplTest.cpp
-        MatlabV5ArrayDataTypeParserTest.cpp
         TagParserTest.cpp
         )
 

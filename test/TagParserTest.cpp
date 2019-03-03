@@ -12,7 +12,7 @@ BOOST_AUTO_TEST_SUITE(TAGPARSER_SUITE)
         CobraModelParser::ByteParser byteParser;
         byteParser.setEndianIndicator("MI");
 
-        std::vector<CobraModelParser::byte> tag {
+        std::vector<CobraModelParser::Byte> tag {
                 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08
         };
         CobraModelParser::MatlabV5::DataType expectedType =
@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_SUITE(TAGPARSER_SUITE)
             CobraModelParser::ByteParser byteParser;
             byteParser.setEndianIndicator("IM");
 
-            std::vector<CobraModelParser::byte> tag {
+            std::vector<CobraModelParser::Byte> tag {
                     0x01, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00
             };
             CobraModelParser::MatlabV5::DataType expectedType =

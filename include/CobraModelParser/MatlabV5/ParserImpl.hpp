@@ -10,8 +10,10 @@
 #include "CobraModelParser/FileLoader.hpp"
 #include "CobraModelParser/ModelBuilder.hpp"
 #include "CobraModelParser/Parser.hpp"
+#include "CobraModelParser/MatlabV5/ArrayFlags.hpp"
 #include "CobraModelParser/MatlabV5/Header.hpp"
-#include "CobraModelParser/MatlabV5/Body.hpp"
+#include "ArrayDimensions.hpp"
+#include "ArrayName.hpp"
 
 namespace CobraModelParser {
     namespace MatlabV5 {
@@ -22,20 +24,42 @@ namespace CobraModelParser {
                 ByteQueue byteQueue = FileLoader::loadFileContentsAsByteQueue(filename);
 
                 Header header(byteQueue, byteParser);
-                Body body(byteQueue, byteParser);
-                //            auto dataElements = parseBody(filename, header);
-                //            assert(dataElements.size() == 1);
-                //
+                const std::pair<Eigen::MatrixXd, Eigen::VectorXd> &data = parseBody(byteQueue, byteParser);
+
                 return ModelBuilder()
-                .setModelOrigin(filename)
-                .setModelDescription(header.getHeaderText())
-                .build();
+                        .setModelOrigin(filename)
+                        .setModelDescription(header.getHeaderText())
+                        .setData(data.first, data.second)
+                        .build();
             }
 
         private:
-            ModelBuilder addBodyDataToModel(ModelBuilder& modelBuilder) {
+            std::pair<Eigen::MatrixXd, Eigen::VectorXd>
+            parseBody(ByteQueue &byteQueue, const ByteParser &byteParser) const {
+                TagParser tagParser(byteParser);
+                Tag tag = tagParser.parseTag(byteQueue);
+                if (byteQueue.getRemainingBytes() != tag.getNumberOfBytes()) {
+                    throw UnexpectedSizeException(byteQueue.getRemainingBytes(), tag.getNumberOfBytes());
+                }
+                auto expectedType = DataTypeTable::lookUp(14);
+                if (expectedType != tag.getType()) {
+                    throw UnexpectedDataTypeException(expectedType.getSymbol(), tag.getType().getSymbol());
+                }
 
+                const ArrayFlags &arrayFlags = ArrayFlags::fromByteQueue(byteQueue, byteParser, tagParser);
+                std::cout << "arrayFlags" << std::endl;
+                std::cout << arrayFlags << std::endl;
+
+                const ArrayDimensions &arrayDimensions = ArrayDimensions::fromByteQueue(byteQueue, byteParser,
+                                                                                        tagParser);
+                std::cout << arrayDimensions << std::endl;
+
+                const ArrayName &name = ArrayName::fromByteQueue(byteQueue, byteParser, tagParser);
+                std::cout << "name: " << name << std::endl;
+
+                return std::make_pair(Eigen::MatrixXd(), Eigen::VectorXd());
             }
+
         };
     }
 }

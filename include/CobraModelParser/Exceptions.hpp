@@ -73,24 +73,24 @@ namespace CobraModelParser {
         }
     };
 
-//    class UnexpectedDataTypeException : public std::exception {
-//    public:
-//        UnexpectedDataTypeException(const MatlabV5DataType &expectedType, const MatlabV5DataType &actualType)
-//                : expectedType(expectedType), actualType(actualType) {}
-//
-//        const char *what() const throw() override {
-//            std::string message =
-//                    "Expected Data Type " + expectedType.getSymbol() + ", but got " + actualType.getSymbol() + ".";
-//            char *buffer = new char[message.size() + 1];
-//            std::memcpy(buffer, message.c_str(), message.size() + 1);
-//            return buffer;
-//        }
-//
-//    private:
-//        MatlabV5DataType expectedType;
-//        MatlabV5DataType actualType;
-//    };
-//
+    class UnexpectedDataTypeException : public std::exception {
+    public:
+        UnexpectedDataTypeException(std::string expectedType, std::string actualType)
+                : expectedType(std::move(expectedType)), actualType(std::move(actualType)) {}
+
+        const char *what() const throw() override {
+            std::string message =
+                    "Expected Data Type " + expectedType + ", but got " + actualType + ".";
+            char *buffer = new char[message.size() + 1];
+            std::memcpy(buffer, message.c_str(), message.size() + 1);
+            return buffer;
+        }
+
+    private:
+        std::string expectedType;
+        std::string actualType;
+    };
+
 //    class UnexpectedArrayDataTypeException : public std::exception {
 //    public:
 //        UnexpectedArrayDataTypeException(const MatlabV5ArrayDataType &expectedType,
@@ -141,6 +141,24 @@ namespace CobraModelParser {
     private:
         size_t expectedSize;
         size_t actualSize;
+    };
+
+    class IndexException : public std::exception {
+    public:
+        IndexException(size_t upperBound, size_t actualIndex) : upperBound(upperBound), actualIndex(actualIndex) {}
+
+        const char *what() const throw() override {
+            std::string message =
+                    "Expected Index to be between 0 and " + std::to_string(upperBound) + ", but got " +
+                    std::to_string(actualIndex) + ".";
+            char *buffer = new char[message.size() + 1];
+            std::memcpy(buffer, message.c_str(), message.size() + 1);
+            return buffer;
+        }
+
+    private:
+        size_t upperBound;
+        size_t actualIndex;
     };
 
     template<typename T>

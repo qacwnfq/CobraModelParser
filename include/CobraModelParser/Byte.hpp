@@ -4,7 +4,7 @@
 #include <cstdint>
 
 namespace CobraModelParser {
-    typedef uint8_t byte;
+    typedef uint8_t Byte;
 }
 
 #endif //COBRAMODELPARSER_BYTE_HPP

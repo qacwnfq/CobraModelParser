@@ -5,53 +5,62 @@
 #include <ostream>
 
 namespace CobraModelParser {
-    namespace MatlabV5{
-            class DataType {
-                public:
-                DataType()
-                {}
+    namespace MatlabV5 {
+        class DataType {
+        public:
+            DataType() {}
 
-                DataType(
-                        size_t
-                value,
-                const std::string &symbol,
-                const std::string &description) : value(value), symbol(symbol), description(description)
-                {}
+            friend std::ostream &operator<<(std::ostream &os, const DataType &type) {
+                os << "value: " << type.value << " symbol: " << type.symbol << " description: " << type.description
+                   << " size: " << type.size;
+                return os;
+            }
 
-                unsigned int getValue() const {
-                    return value;
-                }
+            bool operator==(const DataType &rhs) const {
+                return value == rhs.value &&
+                       symbol == rhs.symbol &&
+                       description == rhs.description &&
+                       size == rhs.size;
+            }
 
-                const std::string &getSymbol() const {
-                    return symbol;
-                }
+            bool operator!=(const DataType &rhs) const {
+                return !(rhs == *this);
+            }
 
-                const std::string &getDescription() const {
-                    return description;
-                }
+            DataType(size_t value,
+                     const std::string &symbol,
+                     const std::string &description) : value(value),
+                                                       symbol(symbol),
+                                                       description(
+                                                               description) {}
 
-                friend std::ostream &operator<<(std::ostream &os, const DataType &type) {
-                    os << "value: " << type.value << " symbol: " << type.symbol << " description: " << type.description;
-                    return os;
-                }
+            DataType(size_t value, const std::string &symbol, const std::string &description, size_t size) : value(
+                    value), symbol(symbol), description(description), size(size) {}
 
-                bool operator==(const DataType &rhs) const {
-                    return value == rhs.value &&
-                           symbol == rhs.symbol &&
-                           description == rhs.description;
-                }
+            unsigned int getValue() const {
+                return value;
+            }
 
-                bool operator!=(const DataType &rhs) const {
-                    return !(rhs == *this);
-                }
+            const std::string &getSymbol() const {
+                return symbol;
+            }
 
-                private:
+            const std::string &getDescription() const {
+                return description;
+            }
 
-                size_t value;
-                std::string symbol;
-                std::string description;
+            size_t getSize() const {
+                return size;
+            }
 
-            };
+        private:
+
+            size_t value;
+            std::string symbol;
+            std::string description;
+            size_t size = 0;
+
+        };
     }
 }
 
