@@ -91,25 +91,6 @@ namespace CobraModelParser {
         std::string actualType;
     };
 
-//    class UnexpectedArrayDataTypeException : public std::exception {
-//    public:
-//        UnexpectedArrayDataTypeException(const MatlabV5ArrayDataType &expectedType,
-//                                         const MatlabV5ArrayDataType &actualType)
-//                : expectedType(expectedType), actualType(actualType) {}
-//
-//        const char *what() const throw() override {
-//            std::string message =
-//                    "Expected Data Type " + expectedType.getSymbol() + ", but got " + actualType.getSymbol() + ".";
-//            char *buffer = new char[message.size() + 1];
-//            std::memcpy(buffer, message.c_str(), message.size() + 1);
-//            return buffer;
-//        }
-//
-//    private:
-//        MatlabV5ArrayDataType expectedType;
-//        MatlabV5ArrayDataType actualType;
-//    };
-
     class UnknownEndianIndicatorException : public std::exception {
     public:
         UnknownEndianIndicatorException(const std::string &indicator) : indicator(indicator) {}

@@ -21,6 +21,16 @@ namespace CobraModelParser {
                 return os;
             }
 
+            ArrayName() = default;
+
+            const Tag &getTag() const {
+                return tag;
+            }
+
+            const std::string &getName() const {
+                return name;
+            }
+
             static ArrayName
             fromByteQueue(ByteQueue &byteQueue, const ByteParser &byteParser, const TagParser &tagParser) {
                 Tag tag = tagParser.parseTag(byteQueue);

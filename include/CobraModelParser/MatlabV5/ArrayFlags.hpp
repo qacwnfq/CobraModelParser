@@ -41,6 +41,8 @@ namespace CobraModelParser {
                 return ArrayFlags(tag, arrayType, complex, global, logical);
             }
 
+            ArrayFlags() = default;
+
             ArrayFlags(
                     Tag tag,
                     ArrayType arrayType,

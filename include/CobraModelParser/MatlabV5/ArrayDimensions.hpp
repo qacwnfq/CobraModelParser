@@ -18,6 +18,14 @@ namespace CobraModelParser {
             ArrayDimensions(Tag tag, const std::vector<size_t> &dimensionSizes) : tag(std::move(tag)), dimensionSizes(
                     dimensionSizes) {}
 
+            const Tag &getTag() const {
+                return tag;
+            }
+
+            const std::vector<size_t> &getDimensionSizes() const {
+                return dimensionSizes;
+            }
+
             friend std::ostream &operator<<(std::ostream &os, const ArrayDimensions &dimensions) {
                 os << "tag: " << dimensions.tag;
                 return os;
@@ -50,6 +58,8 @@ namespace CobraModelParser {
                 dimensionSizes.push_back(dimension_y);
                 return ArrayDimensions(tag, dimensionSizes);
             }
+
+            ArrayDimensions() = default;
 
         private:
             Tag tag;

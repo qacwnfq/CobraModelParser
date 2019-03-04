@@ -33,13 +33,20 @@ namespace CobraModelParser {
                 for(size_t i=0; i<tag.getNumberOfBytes(); i+=fieldNameLength.getMaxSize()) {
                     std::string name = byteParser.parseString(
                             std::vector<Byte>(bytes.begin()+i, bytes.begin()+(i+fieldNameLength.getMaxSize())));
-                    std::cout << "name " << name << std::endl;
                 fieldNames.push_back(name);
                 }
                 return FieldNames(tag, fieldNames);
             }
 
             FieldNames(const Tag &tag, const std::vector<std::string> &fieldNames) : tag(tag), fieldNames(fieldNames) {}
+
+            const Tag &getTag() const {
+                return tag;
+            }
+
+            const std::vector<std::string> &getFieldNames() const {
+                return fieldNames;
+            }
 
 
         private:

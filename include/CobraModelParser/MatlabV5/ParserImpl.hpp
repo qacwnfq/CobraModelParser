@@ -16,6 +16,8 @@
 #include "ArrayName.hpp"
 #include "FieldNameLength.hpp"
 #include "FieldNames.hpp"
+#include "Fields.hpp"
+#include "PolytopeParser.hpp"
 
 namespace CobraModelParser {
     namespace MatlabV5 {
@@ -49,22 +51,20 @@ namespace CobraModelParser {
                 }
 
                 const ArrayFlags &arrayFlags = ArrayFlags::fromByteQueue(byteQueue, byteParser, tagParser);
-                std::cout << "arrayFlags" << std::endl;
-                std::cout << arrayFlags << std::endl;
 
                 const ArrayDimensions &arrayDimensions = ArrayDimensions::fromByteQueue(byteQueue, byteParser,
                                                                                         tagParser);
-                std::cout << arrayDimensions << std::endl;
 
                 const ArrayName &name = ArrayName::fromByteQueue(byteQueue, byteParser, tagParser);
-                std::cout << "name: " << name << std::endl;
 
                 const FieldNameLength &fieldNameLength = FieldNameLength::fromByteQueue(byteQueue, byteParser);
-                std::cout << "field name length " << fieldNameLength << std::endl;
 
-                const FieldNames &fieldNames = FieldNames::fromByteQueue(byteQueue, byteParser, tagParser, fieldNameLength);
+                const FieldNames &fieldNames = FieldNames::fromByteQueue(byteQueue, byteParser, tagParser,
+                                                                         fieldNameLength);
 
-                return std::make_pair(Eigen::MatrixXd(), Eigen::VectorXd());
+                const Fields &fields = Fields::fromByteQueue(byteQueue, byteParser, tagParser, fieldNames);
+
+                return PolytopeParser::fromFields(fields);
             }
 
         };
