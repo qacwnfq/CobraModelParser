@@ -43,7 +43,15 @@ namespace CobraModelParser {
             return result;
         }
 
-        std::string parseString(const std::vector<Byte> &bytes) const {
+        std::string parseString(std::vector<Byte> bytes) const {
+            size_t indexOfNull = bytes.size();
+            for(size_t index=0; index<bytes.size(); ++index) {
+                if(bytes[index] == 0) {
+                    indexOfNull = index;
+                    break;
+                }
+            }
+            bytes.erase(bytes.begin()+indexOfNull, bytes.end());
             return std::string(bytes.begin(), bytes.end());
         }
 

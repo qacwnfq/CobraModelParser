@@ -14,6 +14,8 @@
 #include "CobraModelParser/MatlabV5/Header.hpp"
 #include "ArrayDimensions.hpp"
 #include "ArrayName.hpp"
+#include "FieldNameLength.hpp"
+#include "FieldNames.hpp"
 
 namespace CobraModelParser {
     namespace MatlabV5 {
@@ -56,6 +58,11 @@ namespace CobraModelParser {
 
                 const ArrayName &name = ArrayName::fromByteQueue(byteQueue, byteParser, tagParser);
                 std::cout << "name: " << name << std::endl;
+
+                const FieldNameLength &fieldNameLength = FieldNameLength::fromByteQueue(byteQueue, byteParser);
+                std::cout << "field name length " << fieldNameLength << std::endl;
+
+                const FieldNames &fieldNames = FieldNames::fromByteQueue(byteQueue, byteParser, tagParser, fieldNameLength);
 
                 return std::make_pair(Eigen::MatrixXd(), Eigen::VectorXd());
             }
