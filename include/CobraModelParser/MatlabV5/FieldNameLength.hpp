@@ -21,19 +21,19 @@ namespace CobraModelParser {
                     std::iter_swap(byteBlock.begin() + 1, byteBlock.begin() + 3);
                 }
 
-                auto numberOfBytes = byteParser.parseNumericType<size_t>(
+                auto numberOfBytes = byteParser.parseIntegerType<size_t>(
                         std::vector<Byte>(byteBlock.begin(), byteBlock.begin() + 2));
                 if (numberOfBytes != 4) {
                     throw UnexpectedSizeException(4, numberOfBytes);
                 }
-                auto typeLookUp = byteParser.parseNumericType<size_t>(
+                auto typeLookUp = byteParser.parseIntegerType<size_t>(
                         std::vector<Byte>(byteBlock.begin() + 2, byteBlock.begin() + 4));
                 const DataType &type = DataTypeTable::lookUp(typeLookUp);
                 if (type != DataTypeTable::lookUp(5)) {
                     throw UnexpectedDataTypeException(DataTypeTable::lookUp(5).getSymbol(), type.getSymbol());
                 }
 
-                auto maxSize = byteParser.parseNumericType<size_t>(
+                auto maxSize = byteParser.parseIntegerType<size_t>(
                         std::vector<Byte>(byteBlock.begin() + 4, byteBlock.end()));
 
                 return FieldNameLength(maxSize);

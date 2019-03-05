@@ -21,8 +21,26 @@ namespace CobraModelParser {
 
         ByteParser() = default;
 
+        double parseDouble(std::vector<Byte> bytes) const {
+            assert(bytes.size()==8);
+            if (endianIndicator != "IM" && endianIndicator != "MI") {
+                throw UnknownEndianIndicatorException(endianIndicator);
+            }
+
+            if (this->endianIndicator == "IM") {
+                std::reverse(bytes.begin(), bytes.end());
+            }
+            union
+            { Byte b[8]; double d;};
+            for(size_t i=0; i<bytes.size(); ++i) {
+                b[i] = bytes[i];
+            }
+
+            return d;
+        }
+
         template<typename T>
-        T parseNumericType(std::vector<Byte> bytes) const {
+        T parseIntegerType(std::vector<Byte> bytes) const {
             if (sizeof(T) < bytes.size()) {
                 throw ByteArrayTooLargeException<T>();
             }

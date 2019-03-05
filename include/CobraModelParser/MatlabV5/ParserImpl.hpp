@@ -64,7 +64,7 @@ namespace CobraModelParser {
 
                 const Fields &fields = Fields::fromByteQueue(byteQueue, byteParser, tagParser, fieldNames);
 
-                return PolytopeParser::fromFields(fields);
+                return PolytopeParser::fromFields(fields, byteParser, tagParser);
             }
 
         };

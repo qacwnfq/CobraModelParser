@@ -34,7 +34,7 @@ namespace CobraModelParser {
                 bool global = byteParser.getBitFromByte(flags, 5);
                 bool logical = byteParser.getBitFromByte(flags, 6);
 
-                const auto arrayTypeLookUp = byteParser.parseNumericType<size_t>(
+                const auto arrayTypeLookUp = byteParser.parseIntegerType<size_t>(
                         std::vector<Byte>(byteBlock.begin(), byteBlock.begin() + 1));
                 const ArrayType &arrayType = ArrayTypeTable::lookUp(arrayTypeLookUp);
 

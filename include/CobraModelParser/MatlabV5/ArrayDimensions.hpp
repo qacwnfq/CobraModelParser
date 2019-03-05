@@ -48,9 +48,9 @@ namespace CobraModelParser {
 
                 std::vector<Byte> byteBlock = byteQueue.popByteBlock();
 
-                size_t dimension_x = byteParser.parseNumericType<size_t>(std::vector<Byte>(byteBlock.begin(),
+                size_t dimension_x = byteParser.parseIntegerType<size_t>(std::vector<Byte>(byteBlock.begin(),
                                                                                            byteBlock.begin() + 4));
-                size_t dimension_y = byteParser.parseNumericType<size_t>(std::vector<Byte>(byteBlock.begin() + 4,
+                size_t dimension_y = byteParser.parseIntegerType<size_t>(std::vector<Byte>(byteBlock.begin() + 4,
                                                                                            byteBlock.begin() + 8));
 
                 std::vector<size_t> dimensionSizes;

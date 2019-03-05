@@ -7,12 +7,29 @@
 
 BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
 
+    BOOST_AUTO_TEST_CASE(DOUBLE_LITTLE_ENDIAN) {
+        double expected = 7.5;
+        std::vector<CobraModelParser::Byte> bytes = {0x40, 0x1E, 0x00, 0x0, 0x0, 0x0, 0x0, 0x0};
+
+        CobraModelParser::ByteParser byteParser("IM");
+        double actual = byteParser.parseDouble(bytes);
+        BOOST_CHECK(actual == expected);
+    }
+
+    BOOST_AUTO_TEST_CASE(DOUBLE_BIG_ENDIAN) {
+        double expected = 10.55;
+        std::vector<CobraModelParser::Byte> bytes = {0x9A, 0x99, 0x99, 0x99, 0x99, 0x19, 0x25, 0x40};
+        CobraModelParser::ByteParser byteParser("MI");
+        double actual = byteParser.parseDouble(bytes);
+        BOOST_CHECK(actual == expected);
+    }
+
     BOOST_AUTO_TEST_CASE(SIZE_T_LITTLE_ENDIAN_1_BYTE) {
         size_t expected = 122;
         std::vector<CobraModelParser::Byte> bytes = {122};
 
         CobraModelParser::ByteParser byteParser("IM");
-        size_t actual = byteParser.parseNumericType<size_t>(bytes);
+        size_t actual = byteParser.parseIntegerType<size_t>(bytes);
         BOOST_CHECK(actual == expected);
     }
 
@@ -21,7 +38,7 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
         std::vector<CobraModelParser::Byte> bytes = {6};
 
         CobraModelParser::ByteParser byteParser("MI");
-        size_t actual = byteParser.parseNumericType<size_t>(bytes);
+        size_t actual = byteParser.parseIntegerType<size_t>(bytes);
         BOOST_CHECK(actual == expected);
     }
 
@@ -30,7 +47,7 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
         std::vector<CobraModelParser::Byte> bytes = {0x01, 0x02};
 
         CobraModelParser::ByteParser byteParser("IM");
-        size_t actual = byteParser.parseNumericType<size_t>(bytes);
+        size_t actual = byteParser.parseIntegerType<size_t>(bytes);
         BOOST_CHECK(actual == expected);
     }
 
@@ -39,7 +56,7 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
         std::vector<CobraModelParser::Byte> bytes = {0x01, 0x02};
 
         CobraModelParser::ByteParser byteParser("MI");
-        size_t actual = byteParser.parseNumericType<size_t>(bytes);
+        size_t actual = byteParser.parseIntegerType<size_t>(bytes);
         BOOST_CHECK(actual == expected);
     }
 
@@ -48,7 +65,7 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
         std::vector<CobraModelParser::Byte> bytes = {0x04, 0x03, 0x02, 0x01};
 
         CobraModelParser::ByteParser byteParser("IM");
-        size_t actual = byteParser.parseNumericType<size_t>(bytes);
+        size_t actual = byteParser.parseIntegerType<size_t>(bytes);
         BOOST_CHECK(actual == expected);
     }
 
@@ -57,7 +74,7 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
         std::vector<CobraModelParser::Byte> bytes = {0x01, 0x02, 0x03, 0x04};
 
         CobraModelParser::ByteParser byteParser("MI");
-        size_t actual = byteParser.parseNumericType<size_t>(bytes);
+        size_t actual = byteParser.parseIntegerType<size_t>(bytes);
         BOOST_CHECK(actual == expected);
     }
 
@@ -65,7 +82,7 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
         std::vector<CobraModelParser::Byte> bytes;
 
         CobraModelParser::ByteParser byteParser;
-        BOOST_CHECK_THROW(byteParser.parseNumericType<size_t>(bytes),
+        BOOST_CHECK_THROW(byteParser.parseIntegerType<size_t>(bytes),
                           CobraModelParser::UnknownEndianIndicatorException);
     }
 
@@ -91,5 +108,6 @@ BOOST_AUTO_TEST_SUITE(BYTEPARSER_SUITE)
         BOOST_CHECK(!byteParser.getBitFromByte(byte, 7));
 
     }
+
 
 BOOST_AUTO_TEST_SUITE_END()

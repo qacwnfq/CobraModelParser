@@ -17,10 +17,10 @@ namespace CobraModelParser {
                     throw UnexpectedSizeException(TAG_SIZE, bytes.size());
                 }
 
-                auto numberOfBytes = byteParser.parseNumericType<size_t>(
+                auto numberOfBytes = byteParser.parseIntegerType<size_t>(
                         std::vector<Byte>(bytes.begin() + 4, bytes.end()));
 
-                auto dataTypeLookUp = byteParser.parseNumericType<size_t>(
+                auto dataTypeLookUp = byteParser.parseIntegerType<size_t>(
                         std::vector<Byte>(bytes.begin(), bytes.begin() + 4));
 
                 DataType dataType = DataTypeTable::lookUp(dataTypeLookUp);
