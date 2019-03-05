@@ -46,8 +46,6 @@ namespace CobraModelParser {
                 const ArrayDimensions &dimensions = ArrayDimensions::fromByteQueue(byteQueue, byteParser, tagParser);
                 const ArrayName &name = ArrayName::fromByteQueue(byteQueue, byteParser, tagParser);
 
-                std::cout << fieldName << ":" << name << flags << dimensions << std::endl;
-
                 size_t numberOfDataBytesInField = tag.getNumberOfBytes() -
                         8 -
                         flags.getTag().getNumberOfBytes() -
@@ -55,7 +53,6 @@ namespace CobraModelParser {
                         dimensions.getTag().getNumberOfBytes() -
                         8 -
                         name.getTag().getNumberOfBytes();
-                std::cout << "bytes left: " << numberOfDataBytesInField << std::endl;
 
                 std::vector<Byte> data = byteQueue.popByteBlocks(numberOfDataBytesInField / ByteQueue::BYTE_BLOCK_SIZE);
 

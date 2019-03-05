@@ -18,29 +18,66 @@ namespace CobraModelParser {
                 Field ub = map.find("ub")->second;
                 Field lb = map.find("lb")->second;
 
-                std::cout << "S: " << S.getTag() << std::endl;
-                std::cout << "b: " << b.getTag() << std::endl;
-                std::cout << "ub: " << ub.getTag() << std::endl;
-                std::cout << "lb: " << lb.getTag() << std::endl;
+                Eigen::MatrixXd SMatrix = matrixFromField(S, byteParser, tagParser);
+                Eigen::VectorXd bVector = vectorFromField(b, byteParser, tagParser);
+                Eigen::VectorXd ubVector = vectorFromField(ub, byteParser, tagParser);
+                Eigen::VectorXd lbVector = vectorFromField(lb, byteParser, tagParser);
 
-                const ArrayDimensions &dimensions = S.getArrayDimensions();
-                std::cout << "Sflags: " << S.getArrayFlags() << std::endl;
-                auto SData = ByteQueue(S.getData());
-                std::cout << "dims" << dimensions.getDimensionSizes()[0] << ", " << dimensions.getDimensionSizes()[1]
-                          << std::endl;
-                Tag SArraytag = tagParser.parseTag(SData);
-                std::cout << "s size: " << SData.getRemainingBytes() << ", expected: "
-                          << dimensions.getDimensionSizes()[0] * dimensions.getDimensionSizes()[1] * 8 << std::endl;
+                Eigen::MatrixXd Aresult((2 * SMatrix.rows() + 2 * SMatrix.cols()), SMatrix.cols());
+                Aresult << SMatrix, -SMatrix, -Eigen::MatrixXd::Identity(SMatrix.cols(), SMatrix.cols()),
+                        Eigen::MatrixXd::Identity(SMatrix.cols(), SMatrix.cols());
+                Eigen::VectorXd bresult((2 * bVector.rows() + lbVector.rows() + ubVector.rows()));
+                bresult << bVector, -bVector, -lbVector, ubVector;
+                return std::make_pair(Aresult, bresult);
+            }
 
-                std::vector<double> Scomponents;
-                while(SData.getRemainingBytes() != 0) {
-//                   SComponents.push_back()
+            static Eigen::MatrixXd matrixFromField(const Field &field, const ByteParser &byteParser,
+                                                   const TagParser &tagParser) {
+                const ArrayDimensions &dimensions = field.getArrayDimensions();
+                assert(dimensions.getDimensionSizes().size() == 2);
+                auto data = ByteQueue(field.getData());
+
+                Tag tag = tagParser.parseTag(data);
+                assert(data.getRemainingBytes() ==
+                       dimensions.getDimensionSizes()[0] * dimensions.getDimensionSizes()[1] *
+                       tag.getType().getSize());
+
+                std::vector<double> components;
+                while (data.getRemainingBytes() != 0) {
+                    components.push_back(byteParser.parseDouble(data.popByteBlock()));
                 }
 
+                Eigen::MatrixXd matrix(dimensions.getDimensionSizes()[0], dimensions.getDimensionSizes()[1]);
+                for (size_t x = 0; x < matrix.rows(); ++x) {
+                    for (size_t y = 0; y < matrix.cols(); ++y) {
+                        matrix(x, y) = components[y * matrix.rows() + x];
+                    }
+                }
+                return matrix;
+            }
 
-                Eigen::MatrixXd Aresult;
-                Eigen::VectorXd bresult;
-                return std::make_pair(Aresult, bresult);
+            static Eigen::VectorXd vectorFromField(const Field &field, const ByteParser &
+            byteParser, const TagParser &tagParser) {
+                const ArrayDimensions &dimensions = field.getArrayDimensions();
+                auto data = ByteQueue(field.getData());
+
+                assert(dimensions.getDimensionSizes()[1] == 1);
+
+                Tag tag = tagParser.parseTag(data);
+                assert(data.getRemainingBytes() ==
+                       dimensions.getDimensionSizes()[0] * dimensions.getDimensionSizes()[1] *
+                       tag.getType().getSize());
+
+                std::vector<double> components;
+                while (data.getRemainingBytes() != 0) {
+                    components.push_back(byteParser.parseDouble(data.popByteBlock()));
+                }
+
+                Eigen::VectorXd v(dimensions.getDimensionSizes()[0]);
+                for (size_t x = 0; x < v.rows(); ++x) {
+                    v(x) = components[x];
+                }
+                return v;
             }
         };
     }
