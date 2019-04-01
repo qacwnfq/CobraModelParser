@@ -1,7 +1,6 @@
 #ifndef COBRAMODELPARSER_MATLABV5_FIELDNAMES_HPP
 #define COBRAMODELPARSER_MATLABV5_FIELDNAMES_HPP
 
-#include <CobraModelParser/ByteQueue.hpp>
 #include <CobraModelParser/ByteParser.hpp>
 #include <iostream>
 #include "TagParser.hpp"
@@ -24,10 +23,10 @@ namespace CobraModelParser {
 
                 size_t numberOfFields = tag.getNumberOfBytes()/fieldNameLength.getMaxSize();
 
-                if(tag.getNumberOfBytes() % ByteQueue::BYTE_BLOCK_SIZE!=0) {
-                    throw UnexpectedSizeException(ByteQueue::BYTE_BLOCK_SIZE, tag.getNumberOfBytes());
+                if(tag.getNumberOfBytes() % ByteQueue::MINIMAL_BYTE_BLOCK_SIZE!=0) {
+                    throw UnexpectedSizeException(ByteQueue::MINIMAL_BYTE_BLOCK_SIZE, tag.getNumberOfBytes());
                 }
-                std::vector<Byte> bytes = byteQueue.popByteBlocks(tag.getNumberOfBytes()/ByteQueue::BYTE_BLOCK_SIZE);
+                std::vector<Byte> bytes = byteQueue.popByteBlocks(tag.getNumberOfBytes()/ByteQueue::MINIMAL_BYTE_BLOCK_SIZE);
 
                 std::vector<std::string> fieldNames;
                 for(size_t i=0; i<tag.getNumberOfBytes(); i+=fieldNameLength.getMaxSize()) {

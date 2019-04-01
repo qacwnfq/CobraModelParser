@@ -1,23 +1,18 @@
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 configure_file(resources/AntCore.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
-configure_file(resources/constraintBasedModel.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 configure_file(resources/ecoli_core_model.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 configure_file(resources/iJO1366.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
-configure_file(resources/iJO1366_2.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
-configure_file(resources/matrix.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
+configure_file(resources/Recon2.v04.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 configure_file(resources/unparsableFile.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
-configure_file(resources/vector.mat ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
 
 
 project(CobraModelParserTest CXX)
 
 set(LIBRARY_TESTS_SOURCES
         ByteParserTest.cpp
-        ByteQueueTest.cpp
         FileLoaderTest.cpp
-        ModelTest.cpp
-        MatlabV5ParserImplTest.cpp
+        ParserTest.cpp
         TagParserTest.cpp
         )
 

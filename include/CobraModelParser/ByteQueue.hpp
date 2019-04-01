@@ -1,61 +1,51 @@
+#include <utility>
+
 #ifndef COBRAMODELPARSER_BYTEQUEUE_HPP
 #define COBRAMODELPARSER_BYTEQUEUE_HPP
 
-#include <algorithm>
-#include <string>
+#include "Byte.hpp"
+#include <deque>
 #include <vector>
-
-#include "CobraModelParser/Byte.hpp"
-#include "CobraModelParser/Exceptions.hpp"
 
 namespace CobraModelParser {
     class ByteQueue {
     public:
-        static constexpr size_t BYTE_BLOCK_SIZE = 8;
+        explicit ByteQueue(std::deque<Byte> &bytes) : bytes(std::move(bytes)) {}
 
-        explicit ByteQueue(const std::vector<Byte> &bytes) : bytes(bytes) {
-            if (bytes.size() % BYTE_BLOCK_SIZE != 0) {
-                throw ByteQueueConstructionException(bytes.size(), BYTE_BLOCK_SIZE);
-            }
-            std::reverse(this->bytes.begin(), this->bytes.end());
-        }
-
-        std::vector<Byte> popByteBlock() {
-            std::vector<Byte> byteBlock;
-            for (size_t i = 0; i < BYTE_BLOCK_SIZE; ++i) {
-                byteBlock.push_back(bytes[bytes.size() - 1]);
-                bytes.pop_back();
-            }
-            return byteBlock;
-        }
-
-        std::vector<Byte> popByteBlocks(size_t numberOfByteBlocksToParse) {
-            std::vector<Byte> byteBlocks;
-            for (size_t i = 0; i < numberOfByteBlocksToParse; ++i) {
-                std::vector<Byte> byteBlock = popByteBlock();
-                byteBlocks.insert(byteBlocks.end(), byteBlock.begin(), byteBlock.end());
-            }
-            return byteBlocks;
-        }
-
-        void popUndefinedByteBlock() {
-            for (size_t i = 0; i < BYTE_BLOCK_SIZE; ++i) {
-                bytes.pop_back();
-            }
-        }
-
-        void popUndefinedByteBlocks(size_t numberofByteBlocksToParse) {
-            for (size_t i = 0; i < numberofByteBlocksToParse; ++i) {
-                popUndefinedByteBlock();
-            }
-        }
-
-        size_t getRemainingBytes() const {
+        size_t getNumberOfBytes() {
             return bytes.size();
         }
 
+        std::vector<Byte> pop_front(size_t numberOfBytesToPop) {
+            std::vector<Byte> poppedBytes;
+            poppedBytes.reserve(numberOfBytesToPop);
+
+            poppedBytes.insert(poppedBytes.begin(),
+                               std::make_move_iterator(bytes.begin()),
+                               std::make_move_iterator(bytes.begin() + numberOfBytesToPop));
+            for(size_t i=0; i<numberOfBytesToPop; ++i) {
+                bytes.pop_front();
+            }
+
+            return poppedBytes;
+        }
+
+        std::vector<Byte> pop_back(size_t numberOfBytesToPop) {
+            std::vector<Byte> poppedBytes;
+            poppedBytes.reserve(numberOfBytesToPop);
+
+            poppedBytes.insert(poppedBytes.begin(),
+                               std::make_move_iterator(bytes.end()-numberOfBytesToPop),
+                               std::make_move_iterator(bytes.end()));
+            for(size_t i=0; i<numberOfBytesToPop; ++i) {
+                bytes.pop_back();
+            }
+
+            return poppedBytes;
+        }
+
     private:
-        std::vector<Byte> bytes;
+        std::deque<Byte> bytes;
     };
 }
 

@@ -5,7 +5,6 @@
 
 #include <map>
 
-#include <CobraModelParser/ByteQueue.hpp>
 #include "TagParser.hpp"
 #include "FieldNames.hpp"
 #include "Field.hpp"

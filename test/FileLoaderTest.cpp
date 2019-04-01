@@ -8,14 +8,14 @@
 BOOST_AUTO_TEST_SUITE(FILELOADER_SUITE)
 
     BOOST_AUTO_TEST_CASE(FILELOADER_THROWS_IF_FILE_NOT_FOUND) {
-        BOOST_CHECK_THROW(CobraModelParser::FileLoader::loadFileContentsAsByteQueue("nonExistingFile"),
+        BOOST_CHECK_THROW(CobraModelParser::FileLoader::loadFileContents("nonExistingFile"),
                           CobraModelParser::FileNotFoundException);
     }
 
     BOOST_AUTO_TEST_CASE(MatlabV5ParserImpl_parsesModel) {
-        CobraModelParser::ByteQueue byteQueue = CobraModelParser::FileLoader::loadFileContentsAsByteQueue(
+        auto byteQueue = CobraModelParser::FileLoader::loadFileContents(
                 "iJO1366.mat");
-        BOOST_CHECK(byteQueue.getRemainingBytes() == 38792568);
+        BOOST_CHECK(byteQueue.size() == 38792568);
     }
 
 BOOST_AUTO_TEST_SUITE_END()

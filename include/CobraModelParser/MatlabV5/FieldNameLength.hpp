@@ -5,7 +5,6 @@
 #include <cstddef>
 #include <ostream>
 #include <CobraModelParser/ByteParser.hpp>
-#include "CobraModelParser/ByteQueue.hpp"
 #include "DataTypeTable.hpp"
 
 namespace CobraModelParser {

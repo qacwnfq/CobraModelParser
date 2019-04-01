@@ -5,7 +5,6 @@
 
 #include <ostream>
 #include <CobraModelParser/ByteParser.hpp>
-#include "CobraModelParser/ByteQueue.hpp"
 #include "CobraModelParser/MatlabV5/ArrayType.hpp"
 #include "CobraModelParser/MatlabV5/ArrayTypeTable.hpp"
 #include "CobraModelParser/MatlabV5/TagParser.hpp"

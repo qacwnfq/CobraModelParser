@@ -153,25 +153,6 @@ namespace CobraModelParser {
         }
     };
 
-    class ByteQueueConstructionException : public std::exception {
-    public:
-        ByteQueueConstructionException(size_t size, size_t byteBlockSize) : size(size), byteBlockSize(byteBlockSize) {}
-
-        const char *what() const throw() override {
-            std::string message =
-                    "Number of Bytes is " + std::to_string(size) + ", but number of bytes needs to be multiple of " +
-                    std::to_string(byteBlockSize) + ".";
-            char *buffer = new char[message.size() + 1];
-            std::memcpy(buffer, message.c_str(), message.size() + 1);
-            return buffer;
-        }
-
-    private:
-        size_t size;
-        size_t byteBlockSize;
-    };
-
-
 }
 
 #endif //COBRAMODELPARSER_EXCEPTIONS_HPP

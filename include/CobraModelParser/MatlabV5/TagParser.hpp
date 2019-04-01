@@ -2,7 +2,6 @@
 #define COBRAMODELPARSER_MATLABV5_TAGPARSER_HPP
 
 #include "CobraModelParser/ByteParser.hpp"
-#include "CobraModelParser/ByteQueue.hpp"
 #include "CobraModelParser/MatlabV5/Tag.hpp"
 #include "CobraModelParser/MatlabV5/DataTypeTable.hpp"
 

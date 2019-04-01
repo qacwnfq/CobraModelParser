@@ -3,7 +3,6 @@
 
 #include <cmath>
 #include <string>
-#include <CobraModelParser/ByteQueue.hpp>
 #include <CobraModelParser/ByteParser.hpp>
 #include <ostream>
 
@@ -36,7 +35,7 @@ namespace CobraModelParser {
                 Tag tag = tagParser.parseTag(byteQueue);
 
                 const std::vector<Byte> &byteBlocks = byteQueue.popByteBlocks(
-                        std::ceil(static_cast<long double>(tag.getNumberOfBytes()) / ByteQueue::BYTE_BLOCK_SIZE));
+                        std::ceil(static_cast<long double>(tag.getNumberOfBytes()) / ByteQueue::MINIMAL_BYTE_BLOCK_SIZE));
 
                 std::string name = byteParser.parseString(std::vector<Byte>(byteBlocks.begin(),
                         byteBlocks.begin()+tag.getNumberOfBytes()));

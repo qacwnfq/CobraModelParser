@@ -54,7 +54,7 @@ namespace CobraModelParser {
                         8 -
                         name.getTag().getNumberOfBytes();
 
-                std::vector<Byte> data = byteQueue.popByteBlocks(numberOfDataBytesInField / ByteQueue::BYTE_BLOCK_SIZE);
+                std::vector<Byte> data = byteQueue.popByteBlocks(numberOfDataBytesInField / ByteQueue::MINIMAL_BYTE_BLOCK_SIZE);
 
                 return Field(tag,
                         flags,

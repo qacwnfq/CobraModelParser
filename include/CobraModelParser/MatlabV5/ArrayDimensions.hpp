@@ -8,7 +8,6 @@
 #include <iostream>
 
 #include "CobraModelParser/ByteParser.hpp"
-#include "CobraModelParser/ByteQueue.hpp"
 #include "CobraModelParser/MatlabV5/TagParser.hpp"
 
 namespace CobraModelParser {
@@ -44,7 +43,7 @@ namespace CobraModelParser {
                 }
 
                 size_t numberOfBlocksToRead = std::ceil(
-                        static_cast<long double>(tag.getNumberOfBytes()) / byteQueue.BYTE_BLOCK_SIZE);
+                        static_cast<long double>(tag.getNumberOfBytes()) / byteQueue.MINIMAL_BYTE_BLOCK_SIZE);
 
                 std::vector<Byte> byteBlock = byteQueue.popByteBlock();
 
