@@ -15,7 +15,7 @@ BOOST_AUTO_TEST_SUITE(FILELOADER_SUITE)
     BOOST_AUTO_TEST_CASE(MatlabV5ParserImpl_parsesModel) {
         auto byteQueue = CobraModelParser::FileLoader::loadFileContents(
                 "iJO1366.mat");
-        BOOST_CHECK(byteQueue.size() == 38792568);
+        BOOST_CHECK(byteQueue.getNumberOfBytes() == 38792568);
     }
 
 BOOST_AUTO_TEST_SUITE_END()
