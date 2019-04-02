@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE Parser
+#define BOOST_TEST_MODULE ParserTest
 #define BOOST_TEST_DYN_LINK
 
 #include <boost/test/included/unit_test.hpp>

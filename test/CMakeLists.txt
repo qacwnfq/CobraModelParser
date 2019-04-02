@@ -11,6 +11,7 @@ project(CobraModelParserTest CXX)
 
 set(LIBRARY_TESTS_SOURCES
         ByteParserTest.cpp
+        ByteQueueTest.cpp
         FileLoaderTest.cpp
         ParserTest.cpp
         TagParserTest.cpp

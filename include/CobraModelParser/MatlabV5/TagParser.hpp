@@ -2,6 +2,7 @@
 #define COBRAMODELPARSER_MATLABV5_TAGPARSER_HPP
 
 #include "CobraModelParser/ByteParser.hpp"
+#include "CobraModelParser/ByteQueue.hpp"
 #include "CobraModelParser/MatlabV5/Tag.hpp"
 #include "CobraModelParser/MatlabV5/DataTypeTable.hpp"
 
@@ -25,10 +26,6 @@ namespace CobraModelParser {
                 DataType dataType = DataTypeTable::lookUp(dataTypeLookUp);
 
                 return Tag(dataType, numberOfBytes);
-            }
-
-            Tag parseTag(ByteQueue &byteQueue) const {
-                return parseTag(byteQueue.popByteBlock());
             }
 
         private:
